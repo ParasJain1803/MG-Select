@@ -1,0 +1,295 @@
+@use '../abstracts' as *;
+
+.car-scene {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    color: $white-primary;
+    background-color: $black-primary; // Prevents white flash during transitions
+    font-family: 'Inter', sans-serif;
+
+    // --- Background Layers ---
+    &__backgrounds {
+        @include absolute-inset;
+        z-index: 1;
+    }
+
+    &__bg {
+        @include absolute-inset;
+        background-size: cover;
+        background-position: center;
+        @include transition(opacity);
+        
+        &--light {
+            opacity: 1;
+            z-index: 1;
+            background-image: url('../../assets/images/page 2/day-bg.webp');
+        }
+
+        &--dark {
+            opacity: 0;
+            z-index: 2;
+            background-image: url('../../assets/images/page 2/night-bg.webp');
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // --- Visuals (Car) ---
+    &__visuals {
+        position: absolute;
+        // bottom: 15%; // Slightly lower to accommodate larger size
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 1800px; // Restored to previous large size
+        height: 100vh; // Increased height for larger cars
+        z-index: 2;
+        pointer-events: none;
+        @include center;
+        align-items: flex-end;
+    }
+
+    &__car-item {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        @include center;
+        align-items: flex-end;
+        @include transition(all, 0.4s); // Faster transition
+        pointer-events: none;
+        transform: scale(0.95);
+        will-change: transform, opacity;
+
+        &.is-active {
+            opacity: 1;
+            pointer-events: auto;
+            z-index: 5;
+            transform: translateX(0) scale(1);
+        }
+
+        &.move-left {
+            transform: translateX(-100vw);
+            opacity: 0;
+        }
+
+        &.move-right {
+            transform: translateX(100vw);
+            opacity: 0;
+        }
+    }
+
+    &__car-main {
+        @include absolute-inset;
+        width: 100%;
+        @include transition(opacity);
+        will-change: opacity;
+        @include center;
+        align-items: flex-end;
+
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: contain;
+            margin: 0 auto;
+            display: block;
+            filter: drop-shadow(0 20px 50px $black-shadow-30);
+        }
+
+        &--light {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        &--dark {
+            opacity: 0;
+            z-index: 2;
+        }
+    }
+
+    // --- Navigation Arrows ---
+    &__nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: $white-overlay-05;
+        backdrop-filter: blur(15px);
+        border: 1px solid $white-overlay-10;
+        color: $white-primary;
+        @include center;
+        cursor: pointer;
+        padding: 0;
+        @include transition(all, 0.4s);
+
+        svg {
+            width: 24px;
+            height: 24px;
+            opacity: 0.8;
+        }
+
+        &--prev { left: 40px; }
+        &--next { right: 40px; }
+
+        &:hover {
+            background: $white-overlay-15;
+            backdrop-filter: blur(20px);
+            border: 1px solid $white-overlay-30;
+            transform: translateY(-50%) scale(1.05);
+        }
+    }
+
+    // --- Hero Content (Bottom Left) ---
+    &__content {
+        position: absolute;
+        bottom: 15%;
+        left: 50px;
+        z-index: 10;
+        min-width: 538px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    &__title {
+        font-size: clamp(30px, 3.5vw, 48px);
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1;
+    }
+
+    &__subtitle {
+        font-size: clamp(13px, 1.5vw, 16px);
+        font-weight: 400;
+        padding: 15px 0;
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: inherit;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        @include transition(all, 0.3s);
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        &--explore {
+            padding: 14px 30px;
+            border: 1px solid $white-primary;
+            border-radius: 2px;
+            width: 278px;
+
+            &:hover {
+                background: $white-primary;
+                color: $black-primary;
+            }
+        }
+
+        &--download {
+            border-bottom: 1px solid transparent;
+            padding-bottom: 4px;
+
+            &:hover {
+                border-bottom-color: $white-primary;
+            }
+        }
+    }
+
+    // --- Bottom UI (Marker & Progress) ---
+    &__bottom {
+        position: absolute;
+        bottom: 25px;
+        left: 50px;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        align-items: center;
+        gap: 260px;
+        z-index: 10;
+    }
+
+    &__marker {
+        position: relative;
+        width: 24px;
+        height: 24px;
+        border: 1px solid $white-overlay-30;
+        border-radius: 50%;
+        @include center;
+        flex-shrink: 0;
+        cursor: pointer;
+        @include transition(transform, 0.3s);
+
+        &:hover {
+            transform: scale(1.1);
+        }
+
+        &::after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            border: 1.5px solid $white-overlay-80;
+            border-radius: 50%;
+        }
+    }
+
+    &__progress-container {
+        flex: 1;
+        height: 1px;
+        background: $white-overlay-15;
+        position: relative;
+        cursor: pointer;
+    }
+
+    &__progress-fill {
+        position: absolute;
+        left: 0;
+        top: -0.5px;
+        height: 2px;
+        width: 50%; // Fixed width
+        background: $white-primary;
+        @include transition(all, 0.3s); // Snappy transition for position
+    }
+
+    // --- Dark Mode State ---
+    &.is-dark {
+        .car-scene__bg--light { 
+            opacity: 1; // Keep visible underneath to prevent gaps
+            z-index: 1; 
+        }
+        .car-scene__bg--dark { 
+            opacity: 1; 
+            z-index: 2; 
+        }
+
+        .car-scene__car-main--light { 
+            opacity: 0; 
+        }
+        .car-scene__car-main--dark { 
+            opacity: 1; 
+        }
+    }
+}

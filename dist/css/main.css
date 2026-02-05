@@ -4,24 +4,124 @@
   box-sizing: border-box;
 }
 
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+html, body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
+@font-face {
+  font-family: "Sequel";
+  src: url("/assets/fonts/sequel.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
 }
-
+@font-face {
+  font-family: "Roboto";
+  src: url("/assets/fonts/roboto.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+}
 body {
-  font-family: var(--font-main, sans-serif);
-  font-size: var(--font-size-base, 16px);
+  font-family: "Inter", sans-serif;
+  color: rgb(0, 0, 0);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: "Sequel", sans-serif;
+}
+
+.sticky-header {
+  width: 100%;
+  height: 102px;
+  background: transparent;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header {
+  width: 100%;
+  position: relative;
+  padding-top: 30px;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav__logo {
+  width: 206px;
+  height: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav__logo--light, .nav__logo--dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.nav__logo--light {
+  z-index: 10;
+}
+.nav__logo--dark {
+  z-index: 9;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 32px;
+  height: 16px;
+  position: relative;
+}
+.hamburger__btn--top, .hamburger__btn--bottom {
+  height: 2px;
+  background-color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  transform-origin: center;
+  position: absolute;
+}
+.hamburger__btn--top {
+  width: 100%;
+  top: 0;
+}
+.hamburger__btn--bottom {
+  width: 18px;
+  bottom: 0;
+}
+.hamburger.active .hamburger__btn--top {
+  transform: translateY(7px) rotate(45deg);
+  width: 100%;
+}
+.hamburger.active .hamburger__btn--bottom {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 100%;
 }
 
 .btn {
@@ -29,4 +129,388 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.hero--wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.hero__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.hero__video video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.hero__content {
+  position: absolute;
+  top: 445px;
+  right: 395px;
+  left: 105px;
+  bottom: 45px;
+  width: 780px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+}
+.hero__content--text {
+  font-family: "Sequel", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  width: 100%;
+}
+.hero__content--cta {
+  font-family: "Sequel", sans-serif;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 0.16px;
+  margin-top: 28px;
+  width: 100%;
+  display: block;
+  color: rgb(255, 255, 255);
+}
+.hero__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgb(255, 255, 255);
+  width: 50%;
+  padding: 8px 20px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.hero__btn--text {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  font-family: "Inter", sans-serif;
+}
+.hero__btn--icon {
+  font-size: 20px;
+  fill: rgb(255, 255, 255);
+}
+.hero__controls {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.hero__volume {
+  position: relative;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero__volume--icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero__volume--icon svg {
+  width: 100%;
+  height: 100%;
+}
+.hero__volume--icon svg path {
+  stroke: rgb(255, 255, 255);
+}
+
+.car-scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  font-family: "Inter", sans-serif;
+}
+.car-scene__backgrounds {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.car-scene__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.car-scene__bg--light {
+  opacity: 1;
+  z-index: 1;
+  background-image: url("../../assets/images/page 2/day-bg.webp");
+}
+.car-scene__bg--dark {
+  opacity: 0;
+  z-index: 2;
+  background-image: url("../../assets/images/page 2/night-bg.webp");
+}
+.car-scene__bg img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.car-scene__visuals {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1800px;
+  height: 100vh;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-end;
+}
+.car-scene__car-item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-end;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  transform: scale(0.95);
+  will-change: transform, opacity;
+}
+.car-scene__car-item.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 5;
+  transform: translateX(0) scale(1);
+}
+.car-scene__car-item.move-left {
+  transform: translateX(-100vw);
+  opacity: 0;
+}
+.car-scene__car-item.move-right {
+  transform: translateX(100vw);
+  opacity: 0;
+}
+.car-scene__car-main {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: flex-end;
+}
+.car-scene__car-main img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 20px 50px rgba(0, 0, 0, 0.3));
+}
+.car-scene__car-main--light {
+  opacity: 1;
+  z-index: 1;
+}
+.car-scene__car-main--dark {
+  opacity: 0;
+  z-index: 2;
+}
+.car-scene__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.car-scene__nav svg {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+}
+.car-scene__nav--prev {
+  left: 40px;
+}
+.car-scene__nav--next {
+  right: 40px;
+}
+.car-scene__nav:hover {
+  background: rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transform: translateY(-50%) scale(1.05);
+}
+.car-scene__content {
+  position: absolute;
+  bottom: 15%;
+  left: 50px;
+  z-index: 10;
+  min-width: 538px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.car-scene__title {
+  font-size: clamp(30px, 3.5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.car-scene__subtitle {
+  font-size: clamp(13px, 1.5vw, 16px);
+  font-weight: 400;
+  padding: 15px 0;
+}
+.car-scene__actions {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.car-scene__btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.car-scene__btn svg {
+  width: 18px;
+  height: 18px;
+}
+.car-scene__btn--explore {
+  padding: 14px 30px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 2px;
+  width: 278px;
+}
+.car-scene__btn--explore:hover {
+  background: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}
+.car-scene__btn--download {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 4px;
+}
+.car-scene__btn--download:hover {
+  border-bottom-color: rgb(255, 255, 255);
+}
+.car-scene__bottom {
+  position: absolute;
+  bottom: 25px;
+  left: 50px;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: center;
+  gap: 260px;
+  z-index: 10;
+}
+.car-scene__marker {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.car-scene__marker:hover {
+  transform: scale(1.1);
+}
+.car-scene__marker::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+}
+.car-scene__progress-container {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  cursor: pointer;
+}
+.car-scene__progress-fill {
+  position: absolute;
+  left: 0;
+  top: -0.5px;
+  height: 2px;
+  width: 50%;
+  background: rgb(255, 255, 255);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.car-scene.is-dark .car-scene__bg--light {
+  opacity: 1;
+  z-index: 1;
+}
+.car-scene.is-dark .car-scene__bg--dark {
+  opacity: 1;
+  z-index: 2;
+}
+.car-scene.is-dark .car-scene__car-main--light {
+  opacity: 0;
+}
+.car-scene.is-dark .car-scene__car-main--dark {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }/*# sourceMappingURL=main.css.map */

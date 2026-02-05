@@ -1,16 +1,6 @@
-// Abstracts
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-
-// Base
-@import 'base/reset';
-@import 'base/typography';
-
-// Layout
-@import 'layout/navbar';
-@import 'layout/hero';
-@import 'layout/footer';
-
-// Components
-@import 'components/buttons';
-@import 'components/cards';
+@use './abstracts' as *;
+@use './base' as *;
+@use './layout' as *;
+@use './components' as *;
+@use './pages' as *;
+@use './utilities' as *;
