@@ -44,40 +44,95 @@ const carData = [
 ];
 
 if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
+    // --- Navbar Logo Toggle Logic ---
+    const logoLight = document.querySelector('.nav__logo--light');
+    const logoDark = document.querySelector('.nav__logo--dark');
+    let isCarSceneVisible = false;
+
+    const updateLogo = () => {
+        const isDarkTheme = carScene.classList.contains('is-dark');
+        
+        if (isCarSceneVisible) {
+            // On Page 2: Dark logo by default, switch to Light if theme is dark
+            if (isDarkTheme) {
+                logoLight.classList.remove('hide');
+                logoDark.classList.add('hide');
+            } else {
+                logoLight.classList.add('hide');
+                logoDark.classList.remove('hide');
+            }
+        } else {
+            // On Page 1: Light logo
+            logoLight.classList.remove('hide');
+            logoDark.classList.add('hide');
+        }
+    };
+
+    // Observer to detect which page we are on
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            isCarSceneVisible = entry.isIntersecting;
+            updateLogo();
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(carScene);
+
+    const carouselEl = document.getElementById('carCarousel');
+    const carouselItems = carouselEl.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+    let isAnimating = false;
+
     // Mode Toggle (Light/Dark)
     sceneMarker.addEventListener('click', () => {
         carScene.classList.toggle('is-dark');
+        updateLogo();
     });
 
     // Car Switch Logic with Moving Animation
-    // --- Bootstrap Carousel Integration ---
-    const carouselEl = document.getElementById('carCarousel');
-    const carCarousel = new bootstrap.Carousel(carouselEl, {
-        interval: false,
-        wrap: true
-    });
+    const switchCar = () => {
+        if (isAnimating) return;
+        isAnimating = true;
 
-    // Update Progress Bar, Text and UI on slide
-    carouselEl.addEventListener('slide.bs.carousel', (event) => {
-        const nextIndex = event.to;
+        const currentItem = carouselItems[currentIndex];
+        const nextIndex = (currentIndex + 1) % carouselItems.length;
+        const nextItem = carouselItems[nextIndex];
+
+        // 1. Prepare Next Item (Make visible at 100% off-screen)
+        nextItem.classList.add('is-preparing');
         
-        // Update Text
-        carTitle.textContent = carData[nextIndex].title;
-        carSubtitle.textContent = carData[nextIndex].subtitle;
+        // Forced Reflow
+        void nextItem.offsetWidth;
 
-        // Update Progress Bar
+        // 2. Start Animation Segment
+        currentItem.classList.remove('active');
+        currentItem.classList.add('exiting');
+        
+        // Remove preparation class and add entering
+        nextItem.classList.remove('is-preparing');
+        nextItem.classList.add('entering');
+
+        // Update Text & UI
+        if (carTitle) carTitle.textContent = carData[nextIndex].title;
+        if (carSubtitle) carSubtitle.textContent = carData[nextIndex].subtitle;
         if (progressFill) {
             progressFill.style.width = '50%';
             progressFill.style.left = nextIndex === 0 ? '0%' : '50%';
         }
-    });
 
-    nextCarBtn.addEventListener('click', () => {
-        carCarousel.next();
-    });
+        // 3. Cleanup on transition end
+        nextItem.addEventListener('transitionend', function cleanup() {
+            nextItem.removeEventListener('transitionend', cleanup);
+            
+            currentItem.classList.remove('exiting');
+            nextItem.classList.remove('entering');
+            nextItem.classList.add('active');
+            
+            currentIndex = nextIndex;
+            isAnimating = false;
+        }, { once: true });
+    };
 
-    prevCarBtn.addEventListener('click', () => {
-        // ALWAYS use next() to maintain one-way slide direction for the 2-car loop
-        carCarousel.next();
-    });
+    nextCarBtn.addEventListener('click', switchCar);
+    prevCarBtn.addEventListener('click', switchCar);
 }
