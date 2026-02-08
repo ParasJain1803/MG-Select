@@ -139,3 +139,4 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
     nextCarBtn.addEventListener('click', switchCar);
     prevCarBtn.addEventListener('click', switchCar);
 }
+
