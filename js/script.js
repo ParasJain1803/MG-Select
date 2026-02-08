@@ -47,13 +47,32 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
     // --- Navbar Logo Toggle Logic ---
     const logoLight = document.querySelector('.nav__logo--light');
     const logoDark = document.querySelector('.nav__logo--dark');
-    let isCarSceneVisible = false;
+    const stickyHeader = document.querySelector('.sticky-header');
+    const sections = [
+        document.querySelector('.hero'),
+        document.querySelector('.car-scene'),
+        document.querySelector('.photo__carousel'),
+        document.querySelector('.city-carousel')
+    ];
 
-    const updateLogo = () => {
+    const updateNavbar = (activeSection) => {
+        if (!stickyHeader || !activeSection) return;
+
+        // --- Visibility Control ---
+        if (activeSection.classList.contains('photo__carousel')) {
+            stickyHeader.classList.add('hide-navbar');
+        } else {
+            stickyHeader.classList.remove('hide-navbar');
+        }
+
+        // --- Logo & Theme Control ---
+        const isCarScene = activeSection.classList.contains('car-scene');
+        const isHero = activeSection.classList.contains('hero');
+        const isCityCarousel = activeSection.classList.contains('city-carousel');
         const isDarkTheme = carScene.classList.contains('is-dark');
-        
-        if (isCarSceneVisible) {
-            // On Page 2: Dark logo by default, switch to Light if theme is dark
+
+        if (isCarScene) {
+            // Page 2: Dynamic theme
             if (isDarkTheme) {
                 logoLight.classList.remove('hide');
                 logoDark.classList.add('hide');
@@ -63,23 +82,31 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
                 logoDark.classList.remove('hide');
                 hamburger.classList.add('hamburger--dark');
             }
-        } else {
-            // On Page 1: Light logo
+        } else if (isHero) {
+            // Page 1: Light logo
             logoLight.classList.remove('hide');
             logoDark.classList.add('hide');
             hamburger.classList.remove('hamburger--dark');
+        } else if (isCityCarousel) {
+            // Page 4: Dark logo
+            logoLight.classList.add('hide');
+            logoDark.classList.remove('hide');
+            hamburger.classList.add('hamburger--dark');
         }
     };
 
-    // Observer to detect which page we are on
+    // Observer to detect which section we are in
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            isCarSceneVisible = entry.isIntersecting;
-            updateLogo();
+            if (entry.isIntersecting) {
+                updateNavbar(entry.target);
+            }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.4 });
 
-    observer.observe(carScene);
+    sections.forEach(section => {
+        if (section) observer.observe(section);
+    });
 
     const carouselEl = document.getElementById('carCarousel');
     const carouselItems = carouselEl.querySelectorAll('.carousel-item');
@@ -89,7 +116,7 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
     // Mode Toggle (Light/Dark)
     sceneMarker.addEventListener('click', () => {
         carScene.classList.toggle('is-dark');
-        updateLogo();
+        updateNavbar(carScene);
     });
 
     // Car Switch Logic with Moving Animation

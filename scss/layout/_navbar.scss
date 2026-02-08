@@ -9,6 +9,14 @@
   right: 0;
   left: 0;
   z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  margin-bottom: -102px;
+
+  &.hide-navbar {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
 
 .header {
