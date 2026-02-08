@@ -57,14 +57,17 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
             if (isDarkTheme) {
                 logoLight.classList.remove('hide');
                 logoDark.classList.add('hide');
+                hamburger.classList.remove('hamburger--dark');
             } else {
                 logoLight.classList.add('hide');
                 logoDark.classList.remove('hide');
+                hamburger.classList.add('hamburger--dark');
             }
         } else {
             // On Page 1: Light logo
             logoLight.classList.remove('hide');
             logoDark.classList.add('hide');
+            hamburger.classList.remove('hamburger--dark');
         }
     };
 
