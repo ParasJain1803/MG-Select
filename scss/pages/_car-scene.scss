@@ -6,10 +6,10 @@
     height: 100vh;
     overflow: hidden;
     color: $white-primary;
-    background-color: $black-primary; // Prevents white flash during transitions
+    background-color: $black-primary; 
     font-family: 'Inter', sans-serif;
 
-    // --- Background Layers ---
+    // Background Layer
     &__backgrounds {
         @include absolute-inset;
         z-index: 1;
@@ -40,15 +40,13 @@
         }
     }
 
-    // --- Visuals (Car) ---
     &__visuals {
         position: absolute;
-        // bottom: 15%; // Slightly lower to accommodate larger size
         left: 50%;
         transform: translateX(-50%);
         width: 100%;
-        max-width: 1800px; // Restored to previous large size
-        height: 100vh; // Increased height for larger cars
+        max-width: 1800px; 
+        height: 100vh; 
         z-index: 2;
         pointer-events: none;
         @include center;
@@ -67,7 +65,7 @@
             visibility: hidden;
             pointer-events: none;
             z-index: 1;
-            transform: translateX(100%); // Default to off-screen right
+            transform: translateX(100%); 
 
             &.active {
                 visibility: visible;
@@ -90,7 +88,7 @@
                 transform: translateX(0);
             }
 
-            // Forced visibility for entry prep (without transition)
+            
             &.is-preparing {
                 visibility: visible;
                 transform: translateX(100%);
@@ -168,16 +166,9 @@
 
         &--prev { left: 40px; }
         &--next { right: 40px; }
-
-        &:hover {
-            background: $white-overlay-15;
-            backdrop-filter: blur(20px);
-            border: 1px solid $white-overlay-30;
-            transform: translateY(-50%) scale(1.05);
-        }
     }
 
-    // --- Hero Content (Bottom Left) ---
+    // Hero Content (Bottom Left)
     &__content {
         position: absolute;
         bottom: 15%;
@@ -232,23 +223,17 @@
             border-radius: 2px;
             width: 278px;
 
-            &:hover {
-                background: $white-primary;
-                color: $black-primary;
-            }
         }
 
         &--download {
             border-bottom: 1px solid transparent;
             padding-bottom: 4px;
 
-            &:hover {
-                border-bottom-color: $white-primary;
-            }
+           
         }
     }
 
-    // --- Bottom UI (Marker & Progress) ---
+    // Bottom UI (Marker & Progress)
     &__bottom {
         position: absolute;
         bottom: 25px;

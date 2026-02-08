@@ -92,13 +92,14 @@
     display: flex;
     align-items: center;
     gap: 15px;
+
   }
 
   &__volume {
     position: relative;
     cursor: pointer;
-    width: 24px;
-    height: 24px;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,6 +117,7 @@
         
         path {
           stroke: $white-primary;
+          stroke-width: 1;
         }
       }
     }
