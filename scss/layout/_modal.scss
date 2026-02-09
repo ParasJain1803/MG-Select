@@ -1,0 +1,187 @@
+@use "../abstracts" as *;
+@use "../base" as *;
+.menu-modal {
+    position: fixed;
+    top: 2.5%;
+    left: 2.5%;
+    width: 95%;
+    height: 95%;
+    background-color: $white-primary;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex !important;
+    flex-direction: column;
+    padding: 0 40px;
+    overflow-y: auto;
+    box-shadow: 0 0 50px rgba(0,0,0,0.1); // Added subtle shadow for depth
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    &__body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-top: 40px;
+    }
+
+    &__tabs {
+        display: flex;
+        gap: 40px;
+        margin-bottom: 60px;
+        padding-left: 20px;
+
+        .menu-modal__tab {
+            font-size: 15px;
+            font-family: $font-display;
+            color: rgba(0,0,0,0.3);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: color 0.3s ease;
+
+            &.active {
+                color: $black-primary;
+                border-bottom: 1px solid $black-primary;
+                padding: 10px 15px;
+                font-size: 15px;
+            }
+
+            &:not(.active) {
+                line-height: 40px;
+            }
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex: 1;
+        gap: 60px;
+    }
+
+    &__sidebar {
+        width: 300px;
+        border-right: 1px solid rgba(0,0,0,0.05);
+
+        .menu-modal__vehicle-item {
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+
+            &.active {
+                background: linear-gradient(90deg, #ffe5e5 0%, rgba(255, 255, 255, 0) 100%);
+                border-left: 4px solid #ff4d4d;
+            }
+
+            .menu-modal__vehicle-name {
+                font-size: 20px;
+                font-family: $font-display;
+                margin-bottom: 8px;
+                color: $black-primary;
+            }
+
+            .menu-modal__vehicle-price {
+                font-size: 14px;
+                color: rgba(0,0,0,0.4);
+                font-family: $font-primary;
+            }
+        }
+    }
+
+    &__details {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        &-info {
+            max-width: 400px;
+        }
+
+        .menu-modal__vehicle-title {
+            font-size: 36px;
+            font-family: $font-display;
+            margin-bottom: 20px;
+            color: $black-primary;
+        }
+
+        .menu-modal__vehicle-subtitle {
+            font-size: 18px;
+            color: rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+            line-height: 1.4;
+        }
+
+        &-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .menu-modal__btn-explore {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 200px;
+            padding: 15px 20px;
+            border: 1px solid $black-primary;
+            text-decoration: none;
+            color: $black-primary;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+
+        .menu-modal__links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .menu-modal__link {
+                text-decoration: none;
+                color: $black-primary;
+                font-size: 14px;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 40px;
+
+            img {
+                width: 600px;
+                height: auto;
+                object-fit: contain;
+            }
+        }
+    }
+}

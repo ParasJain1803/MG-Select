@@ -4,6 +4,8 @@
     position: relative;
     background: url("../../assets/images/page 4/dealer-carousel-bg.webp") no-repeat center center/cover;
     overflow: hidden;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 
     &__item {
         // Bootstrap handles visibility and sliding
