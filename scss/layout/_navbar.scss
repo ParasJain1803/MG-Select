@@ -8,9 +8,18 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 3000;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   margin-bottom: -102px;
+
+  &.menu-open {
+    .nav__logo--light {
+      display: none !important;
+    }
+    .nav__logo--dark {
+      display: block !important;
+    }
+  }
 
   &.hide-navbar {
     opacity: 0;
@@ -64,7 +73,7 @@
   right: 40px;
   transform: translateY(-50%);
   cursor: pointer;
-  z-index: 1001;
+  z-index: 100001;
 
   &__btn {
     display: flex;
@@ -101,11 +110,13 @@
       &--top {
         transform: translateY(7px) rotate(45deg);
         width: 100%;
+        background-color: $black-primary;
       }
 
       &--bottom {
         transform: translateY(-7px) rotate(-45deg);
         width: 100%;
+        background-color: $black-primary;
       }
     }
   }
