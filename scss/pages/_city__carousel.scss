@@ -8,16 +8,14 @@
     scroll-snap-stop: always;
 
     &__item {
-        // Bootstrap handles visibility and sliding
-        // We just ensure images fit nicely
+        
         img {
-            object-fit: contain; // Keeps the image aspect ratio
+            object-fit: contain; 
             width: 100%;
             height: 100%;
         }
     }
 
-    // Optional: Style indicators if needed
     .carousel-indicators {
         button {
             width: 20px;

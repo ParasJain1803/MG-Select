@@ -11,10 +11,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
   display: none;
 }
 
-body {
-  overscroll-behavior: none;
-}
-
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -1030,6 +1026,166 @@ h1, h2, h3, h4, h5, h6 {
 }
 .city-carousel .carousel-control-next {
   right: 20px;
+}
+
+.heritage-timeline {
+  padding: 40px 0 0 0;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.heritage-timeline__header {
+  margin-bottom: 40px;
+}
+.heritage-timeline__subtitle {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  letter-spacing: 2.5px;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+}
+.heritage-timeline__subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.heritage-timeline__title {
+  font-size: 2rem;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  margin-top: 30px;
+  padding-left: 3rem;
+  letter-spacing: -0.5px;
+}
+
+.heritageSwiper {
+  width: 92%;
+}
+.heritageSwiper .swiper-slide {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.6s ease-in-out;
+}
+.heritageSwiper .swiper-slide-active {
+  z-index: 10;
+}
+.heritageSwiper .swiper-slide-active .heritage-card {
+  transform: scale(1);
+}
+
+.heritage-card {
+  height: 220px;
+  width: 300px;
+  background: rgb(255, 255, 255);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.6s ease-in-out;
+  transform: scale(0.7);
+  cursor: url("data:image/svg+xml,%3Csvg width='116' height='64' viewBox='0 0 116 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='26.5' y='0.5' width='63' height='63' rx='31.5' fill='white' fill-opacity='0.5' stroke='%238D8D8D'/%3E%3Crect x='56' y='30' width='4' height='4' rx='2' fill='%23161616'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M110.375 32L104.75 37.625L103.962 36.8375L108.8 32L103.962 27.1625L104.75 26.375L110.375 32Z' fill='%238D8D8D'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.625 32L11.25 26.375L12.0375 27.1625L7.2 32L12.0375 36.8375L11.25 37.625L5.625 32Z' fill='%238D8D8D'/%3E%3C/svg%3E%0A"), auto;
+}
+.heritage-card__year-label {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: rgb(0, 0, 0);
+  padding-right: 5px;
+  font-family: "Sequel", sans-serif;
+}
+.heritage-card__image {
+  width: 100%;
+  height: 180px;
+  position: relative;
+}
+.heritage-card__image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.heritage-card__pill {
+  position: absolute;
+  top: 40%;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.heritage-card__pill-plus {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-right: 12px;
+}
+.heritage-card__pill-text {
+  color: rgb(255, 255, 255);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding-right: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.heritage-timeline__ruler-wrapper {
+  position: absolute;
+  bottom: 0px;
+  width: 95%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100px;
+  background: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heritage-timeline__ruler-track {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.heritage-timeline__ruler-group {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0;
+}
+
+.heritage-timeline__ruler-tick {
+  width: 1px;
+  height: 8px;
+  background-color: rgb(0, 0, 0);
+  flex-shrink: 0;
+}
+.heritage-timeline__ruler-tick.tick-md {
+  height: 15px;
+}
+.heritage-timeline__ruler-tick.tick-lg {
+  height: 22px;
 }
 
 .hide {
