@@ -194,16 +194,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   flex-wrap: wrap;
 }
-.footer__bottom--left div {
-  margin: 0;
-}
 .footer__bottom--left a {
   text-decoration: none;
-  color: inherit !important;
+  color: inherit;
   transition: color 0.3s ease;
-}
-.footer__bottom--left a:hover {
-  color: rgb(255, 255, 255) !important;
 }
 .footer__bottom--right {
   display: flex;
@@ -216,10 +210,6 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.6;
   transition: opacity 0.3s ease;
   color: #787879;
-}
-.footer__bottom--right a:hover {
-  opacity: 1;
-  color: rgb(255, 255, 255);
 }
 .footer__bottom--right a svg {
   width: 17px;
@@ -784,8 +774,7 @@ h1, h2, h3, h4, h5, h6 {
   height: 56px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.05);
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgb(255, 255, 255);
   display: flex;

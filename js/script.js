@@ -7,11 +7,9 @@ const menuModal = document.getElementById("menuModal");
 const stickyHeader = document.querySelector(".sticky-header");
 const logoLight = document.querySelector(".nav__logo--light");
 const logoDark = document.querySelector(".nav__logo--dark");
-const carScene = document.getElementById("page2");
+const carScene = document.querySelector("page2");
 
 const updateNavbar = (activeSection) => {
-  if (!stickyHeader || !activeSection) return;
-
   if (activeSection.classList.contains("photo__carousel")) {
     stickyHeader.classList.add("hide-navbar");
   } else {
@@ -214,15 +212,14 @@ const initHeritageSwiper = () => {
 
   const swiper = new Swiper(".heritageSwiper", {
     slidesPerView: "auto",
-    spaceBetween: 0, 
+    spaceBetween: 0,
     centeredSlides: true,
     loop: true,
     speed: 1200,
     grabCursor: true,
 
     on: {
-      init: function () {
-      },
+      init: function () {},
     },
   });
 };
@@ -249,4 +246,3 @@ window.addEventListener("scroll", function () {
     }
   });
 });
-
