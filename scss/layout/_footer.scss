@@ -166,18 +166,11 @@
             font-weight: 400;
             flex-wrap: wrap;
 
-            div {
-                margin: 0;
-            }
-
             a {
                 text-decoration: none;
-                color: inherit !important;
+                color: inherit ;
                 transition: color 0.3s ease;
 
-                &:hover {
-                    color: $white-primary !important;
-                }
             }
         }
 
@@ -192,11 +185,6 @@
                 opacity: 0.6;
                 transition: opacity 0.3s ease;
                 color: $footer-text;
-
-                &:hover {
-                    opacity: 1;
-                    color: $white-primary;
-                }
 
                 svg {
                     width: 17px;

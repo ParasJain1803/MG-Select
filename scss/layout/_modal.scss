@@ -15,7 +15,7 @@
     flex-direction: column;
     padding: 0 40px;
     overflow-y: auto;
-    box-shadow: 0 0 50px rgba(0,0,0,0.1); // Added subtle shadow for depth
+    box-shadow: 0 0 50px rgba(0,0,0,0.1); 
 
     &.active {
         opacity: 1;

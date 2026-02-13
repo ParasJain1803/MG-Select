@@ -1,5 +1,5 @@
 @use '../abstracts' as *;
-@use '../base' as *; 
+@use '../base' as *;
 
 .car-scene {
     position: relative;
@@ -12,7 +12,6 @@
     background-color: $black-primary; 
     font-family: 'Inter', sans-serif;
 
-    // Background Layer
     &__backgrounds {
         @include absolute-inset;
         z-index: 1;
@@ -143,7 +142,6 @@
         }
     }
 
-    // --- Navigation Arrows ---
     &__nav {
         position: absolute;
         top: 50%;
@@ -171,7 +169,6 @@
         &--next { right: 40px; }
     }
 
-    // Hero Content (Bottom Left)
     &__content {
         position: absolute;
         bottom: 15%;
@@ -237,7 +234,6 @@
         }
     }
 
-    // Bottom UI (Marker & Progress)
     &__bottom {
         position: absolute;
         bottom: 25px;
@@ -277,15 +273,14 @@
         left: 0;
         top: -0.5px;
         height: 2px;
-        width: 50%; // Fixed width
+        width: 50%; 
         background: $white-primary;
-        @include transition(all, 0.3s); // Snappy transition for position
+        @include transition(all, 0.3s); 
     }
 
-    // --- Dark Mode State ---
     &.is-dark {
         .car-scene__bg--light { 
-            opacity: 1; // Keep visible underneath to prevent gaps
+            opacity: 1; 
             z-index: 1; 
         }
         .car-scene__bg--dark { 

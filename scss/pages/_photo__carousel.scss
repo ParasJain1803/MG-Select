@@ -77,7 +77,7 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-50% - 20px)); // Adjust for half of the gap
+        transform: translateX(calc(-50% - 20px));
     }
 }
 
