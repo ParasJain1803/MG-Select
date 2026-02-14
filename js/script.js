@@ -7,7 +7,7 @@ const menuModal = document.getElementById("menuModal");
 const stickyHeader = document.querySelector(".sticky-header");
 const logoLight = document.querySelector(".nav__logo--light");
 const logoDark = document.querySelector(".nav__logo--dark");
-const carScene = document.querySelector("page2");
+const carScene = document.querySelector("#page2");
 
 const updateNavbar = (activeSection) => {
   if (activeSection.classList.contains("photo__carousel")) {
@@ -57,26 +57,134 @@ const sections = [
   document.querySelector(".footer"),
 ];
 
+const wrapper = document.querySelector(".wrapper");
 let currentActiveSection = sections[0];
+let isScrolling = false;
+let currentSectionIndex = 0;
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        currentActiveSection = entry.target;
-        if (!menuModal.classList.contains("active")) {
-          updateNavbar(entry.target);
-        }
+// Controlled Smooth Scroll Logic
+const scrollToSection = (index) => {
+  if (index < 0 || index >= sections.length || isScrolling) return;
+
+  isScrolling = true;
+  const start = wrapper.scrollTop;
+  const target = index * window.innerHeight;
+  const distance = target - start;
+  const duration = 1500; // Slow and smooth
+  let startTimestamp = null;
+
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const elapsed = timestamp - startTimestamp;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Easing: easeInOutCubic
+    const easing =
+      progress < 0.5
+        ? 4 * progress * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+    wrapper.scrollTop = start + distance * easing;
+
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    } else {
+      currentSectionIndex = index;
+      currentActiveSection = sections[index];
+      if (!menuModal.classList.contains("active")) {
+        updateNavbar(currentActiveSection);
       }
-    });
+      // Cooldown to prevent immediate accidental scrolls
+      setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+    }
+  };
+
+  window.requestAnimationFrame(step);
+};
+
+// Event Listeners for Scrolling
+window.addEventListener(
+  "wheel",
+  (e) => {
+    if (isScrolling) {
+      e.preventDefault();
+      return;
+    }
+
+    if (Math.abs(e.deltaY) > 30) {
+      if (e.deltaY > 0) {
+        scrollToSection(currentSectionIndex + 1);
+      } else {
+        scrollToSection(currentSectionIndex - 1);
+      }
+    }
+    e.preventDefault();
   },
-  { threshold: 0.4 },
+  { passive: false }
 );
 
-sections.forEach((section) => {
-  if (section) observer.observe(section);
+let touchStartY = 0;
+window.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartY = e.touches[0].clientY;
+  },
+  { passive: false }
+);
+
+window.addEventListener(
+  "touchmove",
+  (e) => {
+    if (isScrolling) {
+      e.preventDefault();
+      return;
+    }
+
+    const touchEndY = e.touches[0].clientY;
+    const deltaY = touchStartY - touchEndY;
+
+    if (Math.abs(deltaY) > 60) {
+      if (deltaY > 0) {
+        scrollToSection(currentSectionIndex + 1);
+      } else {
+        scrollToSection(currentSectionIndex - 1);
+      }
+      touchStartY = touchEndY;
+    }
+    e.preventDefault();
+  },
+  { passive: false }
+);
+
+// Original IntersectionObserver replaced by scroll index tracking, 
+// but we keep the listener for pagination dots if needed.
+wrapper.addEventListener("scroll", function () {
+  const pageIds = ["page1", "page2", "page3", "page4", "page5", "page6"];
+  const dots = document.querySelectorAll(".pagination__page");
+  const scrollPosition = wrapper.scrollTop + 200;
+  
+  pageIds.forEach(function (sectionId, index) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (
+        scrollPosition >= sectionTop &&
+        scrollPosition < sectionTop + sectionHeight
+      ) {
+        if (dots[index]) dots[index].classList.add("active");
+        // Only update currentSectionIndex if not currently animating to avoid jumps
+        if (!isScrolling) currentSectionIndex = index;
+      } else {
+        if (dots[index]) dots[index].classList.remove("active");
+      }
+    }
+  });
 });
 
+// Hamburger Menu Logic
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   menuModal.classList.toggle("active");
@@ -97,13 +205,10 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-const modalVehicleItems = document.querySelectorAll(
-  ".menu-modal__vehicle-item",
-);
+// Modal Vehicle Interaction
+const modalVehicleItems = document.querySelectorAll(".menu-modal__vehicle-item");
 const modalVehicleTitle = document.querySelector(".menu-modal__vehicle-title");
-const modalVehicleSubtitle = document.querySelector(
-  ".menu-modal__vehicle-subtitle",
-);
+const modalVehicleSubtitle = document.querySelector(".menu-modal__vehicle-subtitle");
 const modalVehicleImage = document.getElementById("modalVehicleImage");
 
 const modalVehicleData = {
@@ -131,6 +236,7 @@ modalVehicleItems.forEach((item) => {
   });
 });
 
+// Volume Logic
 if (volumeBtn && video) {
   volumeOnIcon.classList.add("hide");
   volumeOffIcon.classList.remove("hide");
@@ -146,6 +252,7 @@ if (volumeBtn && video) {
   });
 }
 
+// Car Scene Logic
 const sceneMarker = document.getElementById("sceneMarker");
 const prevCarBtn = document.getElementById("prevCar");
 const nextCarBtn = document.getElementById("nextCar");
@@ -161,8 +268,8 @@ const carData = [
 if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
   const carouselEl = document.getElementById("carCarousel");
   const carouselItems = carouselEl.querySelectorAll(".carousel-item");
-  let currentIndex = 0;
-  let isAnimating = false;
+  let carCurrentIndex = 0;
+  let isCarAnimating = false;
 
   sceneMarker.addEventListener("click", () => {
     carScene.classList.toggle("is-dark");
@@ -172,23 +279,28 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
   });
 
   const switchCar = () => {
-    if (isAnimating) return;
-    isAnimating = true;
-    const currentItem = carouselItems[currentIndex];
-    const nextIndex = (currentIndex + 1) % carouselItems.length;
+    if (isCarAnimating) return;
+    isCarAnimating = true;
+    const currentItem = carouselItems[carCurrentIndex];
+    const nextIndex = (carCurrentIndex + 1) % carouselItems.length;
     const nextItem = carouselItems[nextIndex];
+    
     nextItem.classList.add("is-preparing");
     void nextItem.offsetWidth;
+    
     currentItem.classList.remove("active");
     currentItem.classList.add("exiting");
+    
     nextItem.classList.remove("is-preparing");
     nextItem.classList.add("entering");
+    
     if (carTitle) carTitle.textContent = carData[nextIndex].title;
     if (carSubtitle) carSubtitle.textContent = carData[nextIndex].subtitle;
     if (progressFill) {
       progressFill.style.width = "50%";
       progressFill.style.left = nextIndex === 0 ? "0%" : "50%";
     }
+
     nextItem.addEventListener(
       "transitionend",
       function cleanup() {
@@ -196,10 +308,10 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
         currentItem.classList.remove("exiting");
         nextItem.classList.remove("entering");
         nextItem.classList.add("active");
-        currentIndex = nextIndex;
-        isAnimating = false;
+        carCurrentIndex = nextIndex;
+        isCarAnimating = false;
       },
-      { once: true },
+      { once: true }
     );
   };
 
@@ -207,42 +319,16 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
   prevCarBtn.addEventListener("click", switchCar);
 }
 
+// Heritage Swiper Initialization
 const initHeritageSwiper = () => {
-  const rulerTrack = document.getElementById("rulerTrack");
-
-  const swiper = new Swiper(".heritageSwiper", {
+  new Swiper(".heritageSwiper", {
     slidesPerView: "auto",
     spaceBetween: 0,
     centeredSlides: true,
     loop: true,
     speed: 1200,
     grabCursor: true,
-
-    on: {
-      init: function () {},
-    },
   });
 };
 
 initHeritageSwiper();
-
-window.addEventListener("scroll", function () {
-  const pageIds = ["page1", "page2", "page3", "page4", "page5", "page6"];
-  const dots = document.querySelectorAll(".pagination__page");
-  const scrollPosition = window.scrollY + 200;
-  pageIds.forEach(function (sectionId, index) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-      if (
-        scrollPosition >= sectionTop &&
-        scrollPosition < sectionTop + sectionHeight
-      ) {
-        if (dots[index]) dots[index].classList.add("active");
-      } else {
-        if (dots[index]) dots[index].classList.remove("active");
-      }
-    }
-  });
-});

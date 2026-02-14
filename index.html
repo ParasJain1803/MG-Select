@@ -20,37 +20,40 @@
     <link rel="stylesheet" href="/dist/css/main.css" />
   </head>
   <body>
-    <main>
-      <div class="sticky-header">
-        <header class="header">
-          <nav class="nav" aria-label="Main Navigation">
-            <div class="nav__logo">
-              <img
-                class="nav__logo--light"
-                src="./assets/icons/mg-select-final-logo-light.webp"
-                alt="MG Select Logo Light"
-              />
-              <img
-                class="nav__logo--dark hide"
-                src="./assets/icons/mg-select-final-logo-dark.webp"
-                alt="MG Select Logo Dark"
-              />
-            </div>
-          </nav>
-        </header>
-        <div
-          class="hamburger"
-          role="button"
-          aria-expanded="false"
-          aria-label="Menu Toggle"
-        >
-          <div class="hamburger__btn">
-            <div class="hamburger__btn--top"></div>
-            <div class="hamburger__btn--bottom"></div>
+    <!-- Fixed/Sticky header -->
+    <div class="sticky-header">
+      <header class="header">
+        <nav class="nav" aria-label="Main Navigation">
+          <div class="nav__logo">
+            <img
+              class="nav__logo--light"
+              src="./assets/icons/mg-select-final-logo-light.webp"
+              alt="MG Select Logo Light"
+            />
+            <img
+              class="nav__logo--dark hide"
+              src="./assets/icons/mg-select-final-logo-dark.webp"
+              alt="MG Select Logo Dark"
+            />
           </div>
+        </nav>
+      </header>
+      <div
+        class="hamburger"
+        role="button"
+        aria-expanded="false"
+        aria-label="Menu Toggle"
+      >
+        <div class="hamburger__btn">
+          <div class="hamburger__btn--top"></div>
+          <div class="hamburger__btn--bottom"></div>
         </div>
       </div>
-      <section id="page1" class="hero" aria-label="Hero Section">
+    </div>
+
+    <!-- main content -->
+    <div class="wrapper">
+      <section id="page1" class="hero section" aria-label="Hero Section">
         <div class="hero--wrapper">
           <div class="hero__video">
             <video autoplay loop muted playsinline>
@@ -143,104 +146,12 @@
         </div>
       </section>
 
-      <!-- Modal -->
-      <div id="menuModal" class="menu-modal">
-        <div class="menu-modal__body">
-          <div class="menu-modal__tabs">
-            <button class="menu-modal__tab active">Select Your Ride</button>
-            <button class="menu-modal__tab">MG Services</button>
-          </div>
-
-          <div class="menu-modal__content">
-            <div class="menu-modal__sidebar">
-              <div
-                class="menu-modal__vehicle-item active"
-                data-vehicle="cyberster"
-              >
-                <div class="menu-modal__vehicle-name">CYBERSTER</div>
-                <div class="menu-modal__vehicle-price">
-                  Ex-showroom price: ₹ 74,99,000
-                </div>
-              </div>
-              <div class="menu-modal__vehicle-item" data-vehicle="m9">
-                <div class="menu-modal__vehicle-name">M9</div>
-                <div class="menu-modal__vehicle-price">
-                  Ex-showroom price: ₹ 70,90,000
-                </div>
-              </div>
-            </div>
-
-            <div class="menu-modal__details" id="modalVehicleDetails">
-              <div class="menu-modal__details-info">
-                <h2 class="menu-modal__vehicle-title">CYBERSTER</h2>
-                <p class="menu-modal__vehicle-subtitle">
-                  Meet the boldest expressions of MG innovation.
-                </p>
-
-                <div class="menu-modal__details-actions">
-                  <a href="#" class="menu-modal__btn-explore">
-                    EXPLORE
-                    <svg
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                    >
-                      <path d="M7 17L17 7M17 7H7M17 7V17"></path>
-                    </svg>
-                  </a>
-
-                  <div class="menu-modal__links">
-                    <a href="#" class="menu-modal__link"
-                      >E-BOOK
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7V17"></path>
-                      </svg>
-                    </a>
-                    <a href="#" class="menu-modal__link"
-                      >BOOK TEST DRIVE
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7V17"></path>
-                      </svg>
-                    </a>
-                    <a href="#" class="menu-modal__link"
-                      >REQUEST CALLBACK
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path d="M7 17L17 7M17 7H7M17 7V17"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div class="menu-modal__details-image">
-                <img
-                  id="modalVehicleImage"
-                  src="./assets/images/hamburger/cybie-header.webp"
-                  alt="Cyberster"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <!-- page 2 -->
-      <section class="car-scene" id="page2" aria-label="Interactive Car Scene">
+      <section
+        class="car-scene section"
+        id="page2"
+        aria-label="Interactive Car Scene"
+      >
         <div class="car-scene__backgrounds" aria-hidden="true">
           <div class="car-scene__bg car-scene__bg--light">
             <img src="./assets/images/page 2/day-bg.webp" alt="" />
@@ -392,7 +303,8 @@
         </div>
       </section>
 
-      <section id="page3" class="photo__carousel">
+      <!-- page 3 -->
+      <section id="page3" class="photo__carousel section">
         <div class="photo__carousel--welcome"><p>WELCOME TO</p></div>
         <div class="photo__carousel--logo">
           <img
@@ -458,7 +370,7 @@
 
       <!-- page 4 -->
 
-      <section id="page4" class="city-carousel">
+      <section id="page4" class="city-carousel section">
         <div
           id="cityBootstrapCarousel"
           class="carousel slide h-100"
@@ -635,7 +547,7 @@
       </section>
 
       <!-- page 5 -->
-      <section id="page5" class="heritage-timeline">
+      <section id="page5" class="heritage-timeline section">
         <div class="heritage-timeline__header">
           <div class="heritage-timeline__subtitle">OUR HERITAGE</div>
           <h2 class="heritage-timeline__title">
@@ -1026,179 +938,277 @@
           </div>
         </div>
       </section>
-    </main>
 
-    <footer id="page6" class="footer">
-      <div class="footer__top">
-        <div class="footer__top--logo">
-          <img
-            src="./assets/icons/mg-select-final-logo-light.webp"
-            alt="MG Select Logo"
-          />
-        </div>
-        <div class="footer__top--right">
-          <p class="footer__top--right_title">Subscribe to our newsletter</p>
-          <div class="footer__forms">
-            <input type="email" placeholder="Enter email" />
-            <button class="footer__btn">
-              <span class="footer__btn--text">SIGN UP</span>
-              <div class="footer__btn--icon">
-                <svg
-                  width="25px"
-                  height="25px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7 17L17 7M17 7H8M17 7V16"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </div>
-            </button>
+      <footer id="page6" class="footer">
+        <div class="footer__top">
+          <div class="footer__top--logo">
+            <img
+              src="./assets/icons/mg-select-final-logo-light.webp"
+              alt="MG Select Logo"
+            />
           </div>
-          <div class="footer__checkbox">
-            <input type="checkbox" id="agree" />
-            <label for="agree"
-              >I agree to the <a href="#">Privacy Policy</a>.</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <div class="footer__middle">
-        <div class="footer__middle--1">
-          <div class="footer__middle--title">Cyberster</div>
-          <a class="footer__middle--link" href="#">E-BOOK</a>
-          <a class="footer__middle--link" href="#">Test Drive</a>
-          <a class="footer__middle--link" href="#">Register Interest</a>
-        </div>
-        <div class="footer__middle--2">
-          <div class="footer__middle--title">M9</div>
-          <a class="footer__middle--link" href="#">E-BOOK</a>
-          <a class="footer__middle--link" href="#">Test Drive</a>
-          <a class="footer__middle--link" href="#">Register Interest</a>
-        </div>
-        <div class="footer__middle--3">
-          <div class="footer__middle--title">Network</div>
-          <a class="footer__middle--link" href="#">Showroom Locator</a>
-          <a class="footer__middle--link" href="#">Service Center Locator</a>
-        </div>
-        <div class="footer__middle--4">
-          <div class="footer__middle--title">Contact Us</div>
-          <a class="footer__middle--link" href="tel:18005700000"
-            >Call Us at: 18005700000</a
-          >
-          <a class="footer__middle--link" href="mailto:MGSelect@mgmotor.co.in"
-            >Mail Us at: MGSelect@mgmotor.co.in</a
-          >
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <div class="footer__bottom--left">
-          <div>@2026 | MG SELECT</div>
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Referral Program</a>
-        </div>
-        <div class="footer__bottom--right">
-          <a href="#" aria-label="Instagram">
-            <svg
-              width="17px"
-              height="17px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                fill="currentColor"
-              ></path>
-              <path
-                d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
-                fill="currentColor"
-              ></path>
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
-                fill="currentColor"
-              ></path>
-            </svg>
-          </a>
-          <a href="#" aria-label="Twitter">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              x="0px"
-              y="0px"
-              width="17"
-              height="17"
-              viewBox="0,0,256,256"
-            >
-              <g
-                fill="currentColor"
-                fill-rule="nonzero"
-                stroke="none"
-                stroke-width="1"
-                stroke-linecap="butt"
-                stroke-linejoin="miter"
-                stroke-miterlimit="10"
-                stroke-dasharray=""
-                stroke-dashoffset="0"
-                font-family="none"
-                font-weight="none"
-                font-size="none"
-                text-anchor="none"
-                style="mix-blend-mode: normal"
+          <div class="footer__top--right">
+            <p class="footer__top--right_title">Subscribe to our newsletter</p>
+            <div class="footer__forms">
+              <input type="email" placeholder="Enter email" />
+              <button class="footer__btn">
+                <span class="footer__btn--text">SIGN UP</span>
+                <div class="footer__btn--icon">
+                  <svg
+                    width="25px"
+                    height="25px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H8M17 7V16"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+              </button>
+            </div>
+            <div class="footer__checkbox">
+              <input type="checkbox" id="agree" />
+              <label for="agree"
+                >I agree to the <a href="#">Privacy Policy</a>.</label
               >
-                <g transform="scale(8.53333,8.53333)">
-                  <path
-                    d="M26.37,26l-8.795,-12.822l0.015,0.012l7.93,-9.19h-2.65l-6.46,7.48l-5.13,-7.48h-6.95l8.211,11.971l-0.001,-0.001l-8.66,10.03h2.65l7.182,-8.322l5.708,8.322zM10.23,6l12.34,18h-2.1l-12.35,-18z"
-                  ></path>
-                </g>
-              </g>
-            </svg>
-          </a>
-          <a href="#" aria-label="LinkedIn">
-            <svg
-              width="17px"
-              height="17px"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__middle">
+          <div class="footer__middle--1">
+            <div class="footer__middle--title">Cyberster</div>
+            <a class="footer__middle--link" href="#">E-BOOK</a>
+            <a class="footer__middle--link" href="#">Test Drive</a>
+            <a class="footer__middle--link" href="#">Register Interest</a>
+          </div>
+          <div class="footer__middle--2">
+            <div class="footer__middle--title">M9</div>
+            <a class="footer__middle--link" href="#">E-BOOK</a>
+            <a class="footer__middle--link" href="#">Test Drive</a>
+            <a class="footer__middle--link" href="#">Register Interest</a>
+          </div>
+          <div class="footer__middle--3">
+            <div class="footer__middle--title">Network</div>
+            <a class="footer__middle--link" href="#">Showroom Locator</a>
+            <a class="footer__middle--link" href="#">Service Center Locator</a>
+          </div>
+          <div class="footer__middle--4">
+            <div class="footer__middle--title">Contact Us</div>
+            <a class="footer__middle--link" href="tel:18005700000"
+              >Call Us at: 18005700000</a
             >
-              <g id="SVGRepo_iconCarrier">
+            <a class="footer__middle--link" href="mailto:MGSelect@mgmotor.co.in"
+              >Mail Us at: MGSelect@mgmotor.co.in</a
+            >
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__bottom--left">
+            <div>@2026 | MG SELECT</div>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Referral Program</a>
+          </div>
+          <div class="footer__bottom--right">
+            <a href="#" aria-label="Instagram">
+              <svg
+                width="17px"
+                height="17px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
-                  d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z"
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
                   fill="currentColor"
                 ></path>
                 <path
-                  d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z"
-                  fill="currentColor"
-                ></path>
-                <path
-                  d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z"
+                  d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
                   fill="currentColor"
                 ></path>
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
-                  d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"
+                  d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
                   fill="currentColor"
                 ></path>
-              </g>
-            </svg>
-          </a>
+              </svg>
+            </a>
+            <a href="#" aria-label="Twitter">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="17"
+                height="17"
+                viewBox="0,0,256,256"
+              >
+                <g
+                  fill="currentColor"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <g transform="scale(8.53333,8.53333)">
+                    <path
+                      d="M26.37,26l-8.795,-12.822l0.015,0.012l7.93,-9.19h-2.65l-6.46,7.48l-5.13,-7.48h-6.95l8.211,11.971l-0.001,-0.001l-8.66,10.03h2.65l7.182,-8.322l5.708,8.322zM10.23,6l12.34,18h-2.1l-12.35,-18z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg
+                width="17px"
+                height="17px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M6.5 8C7.32843 8 8 7.32843 8 6.5C8 5.67157 7.32843 5 6.5 5C5.67157 5 5 5.67157 5 6.5C5 7.32843 5.67157 8 6.5 8Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M5 10C5 9.44772 5.44772 9 6 9H7C7.55228 9 8 9.44771 8 10V18C8 18.5523 7.55228 19 7 19H6C5.44772 19 5 18.5523 5 18V10Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M11 19H12C12.5523 19 13 18.5523 13 18V13.5C13 12 16 11 16 13V18.0004C16 18.5527 16.4477 19 17 19H18C18.5523 19 19 18.5523 19 18V12C19 10 17.5 9 15.5 9C13.5 9 13 10.5 13 10.5V10C13 9.44771 12.5523 9 12 9H11C10.4477 9 10 9.44772 10 10V18C10 18.5523 10.4477 19 11 19Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M20 1C21.6569 1 23 2.34315 23 4V20C23 21.6569 21.6569 23 20 23H4C2.34315 23 1 21.6569 1 20V4C1 2.34315 2.34315 1 4 1H20ZM20 3C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3H20Z"
+                    fill="currentColor"
+                  ></path>
+                </g>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Fixed hamburger Modal -->
+    <div id="menuModal" class="menu-modal">
+      <div class="menu-modal__body">
+        <div class="menu-modal__tabs">
+          <button class="menu-modal__tab active">Select Your Ride</button>
+          <button class="menu-modal__tab">MG Services</button>
+        </div>
+
+        <div class="menu-modal__content">
+          <div class="menu-modal__sidebar">
+            <div
+              class="menu-modal__vehicle-item active"
+              data-vehicle="cyberster"
+            >
+              <div class="menu-modal__vehicle-name">CYBERSTER</div>
+              <div class="menu-modal__vehicle-price">
+                Ex-showroom price: ₹ 74,99,000
+              </div>
+            </div>
+            <div class="menu-modal__vehicle-item" data-vehicle="m9">
+              <div class="menu-modal__vehicle-name">M9</div>
+              <div class="menu-modal__vehicle-price">
+                Ex-showroom price: ₹ 70,90,000
+              </div>
+            </div>
+          </div>
+
+          <div class="menu-modal__details" id="modalVehicleDetails">
+            <div class="menu-modal__details-info">
+              <h2 class="menu-modal__vehicle-title">CYBERSTER</h2>
+              <p class="menu-modal__vehicle-subtitle">
+                Meet the boldest expressions of MG innovation.
+              </p>
+
+              <div class="menu-modal__details-actions">
+                <a href="#" class="menu-modal__btn-explore">
+                  EXPLORE
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                  </svg>
+                </a>
+
+                <div class="menu-modal__links">
+                  <a href="#" class="menu-modal__link"
+                    >E-BOOK
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="menu-modal__link"
+                    >BOOK TEST DRIVE
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                    </svg>
+                  </a>
+                  <a href="#" class="menu-modal__link"
+                    >REQUEST CALLBACK
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="menu-modal__details-image">
+              <img
+                id="modalVehicleImage"
+                src="./assets/images/hamburger/cybie-header.webp"
+                alt="Cyberster"
+              />
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
+    </div>
+
+    <!-- fixed scroll shower -->
     <div class="pagination">
       <a href="#page1"><div class="pagination__page"></div></a>
       <a href="#page2"><div class="pagination__page"></div></a>

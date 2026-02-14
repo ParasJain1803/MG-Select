@@ -12,10 +12,14 @@ html, body {
     }
 }
 
+// scroll effect
+.wrapper {
+    height: 100vh;
+    overflow: hidden; 
+}
 
-html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+.section {
+    height: 100vh;
 }
 
 .hide {
