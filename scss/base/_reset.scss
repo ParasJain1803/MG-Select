@@ -12,10 +12,17 @@ html, body {
     }
 }
 
-
-html {
+// scroll efffect
+.wrapper {
     scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    height: 100vh;
+    overflow-y: scroll;  
+}
+
+.section {
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .hide {

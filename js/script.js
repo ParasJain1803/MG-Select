@@ -7,7 +7,7 @@ const menuModal = document.getElementById("menuModal");
 const stickyHeader = document.querySelector(".sticky-header");
 const logoLight = document.querySelector(".nav__logo--light");
 const logoDark = document.querySelector(".nav__logo--dark");
-const carScene = document.querySelector("page2");
+const carScene = document.querySelector("#page2");
 
 const updateNavbar = (activeSection) => {
   if (activeSection.classList.contains("photo__carousel")) {
