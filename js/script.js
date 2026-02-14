@@ -79,6 +79,7 @@ const scrollToSection = (index) => {
     const progress = Math.min(elapsed / duration, 1);
 
     // Easing: easeInOutCubic
+    // source: https://github.com/danro/jquery-easing/blob/master/jquery.easing.js
     const easing =
       progress < 0.5
         ? 4 * progress * progress * progress
@@ -122,7 +123,7 @@ window.addEventListener(
     }
     e.preventDefault();
   },
-  { passive: false }
+  { passive: false },
 );
 
 let touchStartY = 0;
@@ -131,7 +132,7 @@ window.addEventListener(
   (e) => {
     touchStartY = e.touches[0].clientY;
   },
-  { passive: false }
+  { passive: false },
 );
 
 window.addEventListener(
@@ -155,16 +156,16 @@ window.addEventListener(
     }
     e.preventDefault();
   },
-  { passive: false }
+  { passive: false },
 );
 
-// Original IntersectionObserver replaced by scroll index tracking, 
+// Original IntersectionObserver replaced by scroll index tracking,
 // but we keep the listener for pagination dots if needed.
 wrapper.addEventListener("scroll", function () {
   const pageIds = ["page1", "page2", "page3", "page4", "page5", "page6"];
   const dots = document.querySelectorAll(".pagination__page");
   const scrollPosition = wrapper.scrollTop + 200;
-  
+
   pageIds.forEach(function (sectionId, index) {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -206,9 +207,13 @@ hamburger.addEventListener("click", () => {
 });
 
 // Modal Vehicle Interaction
-const modalVehicleItems = document.querySelectorAll(".menu-modal__vehicle-item");
+const modalVehicleItems = document.querySelectorAll(
+  ".menu-modal__vehicle-item",
+);
 const modalVehicleTitle = document.querySelector(".menu-modal__vehicle-title");
-const modalVehicleSubtitle = document.querySelector(".menu-modal__vehicle-subtitle");
+const modalVehicleSubtitle = document.querySelector(
+  ".menu-modal__vehicle-subtitle",
+);
 const modalVehicleImage = document.getElementById("modalVehicleImage");
 
 const modalVehicleData = {
@@ -284,16 +289,16 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
     const currentItem = carouselItems[carCurrentIndex];
     const nextIndex = (carCurrentIndex + 1) % carouselItems.length;
     const nextItem = carouselItems[nextIndex];
-    
+
     nextItem.classList.add("is-preparing");
     void nextItem.offsetWidth;
-    
+
     currentItem.classList.remove("active");
     currentItem.classList.add("exiting");
-    
+
     nextItem.classList.remove("is-preparing");
     nextItem.classList.add("entering");
-    
+
     if (carTitle) carTitle.textContent = carData[nextIndex].title;
     if (carSubtitle) carSubtitle.textContent = carData[nextIndex].subtitle;
     if (progressFill) {
@@ -311,7 +316,7 @@ if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
         carCurrentIndex = nextIndex;
         isCarAnimating = false;
       },
-      { once: true }
+      { once: true },
     );
   };
 
@@ -331,4 +336,30 @@ const initHeritageSwiper = () => {
   });
 };
 
+// // Photo Carousel Text Animation (Intersection Observer)
+// const initPhotoCarouselAnimation = () => {
+//   const photoCarouselSection = document.querySelector(".photo__carousel");
+//   const photoCarouselText = document.querySelector(".photo__carousel--text p");
+
+//   if (!photoCarouselSection || !photoCarouselText) return;
+
+//   const observerOptions = {
+//     threshold: 0.3, // Trigger when 30% of the section is visible
+//   };
+
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach((entry) => {
+//       if (entry.isIntersecting) {
+//         photoCarouselText.classList.add("animate-title");
+//       } else {
+//         // Optionally remove class if we want it to re-animate when scrolling back
+//         photoCarouselText.classList.remove("animate-title");
+//       }
+//     });
+//   }, observerOptions);
+
+//   observer.observe(photoCarouselSection);
+// };
+
 initHeritageSwiper();
+// initPhotoCarouselAnimation();
