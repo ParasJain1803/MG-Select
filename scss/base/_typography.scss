@@ -14,16 +14,20 @@
   font-display: swap;
 }
 
-
-$font-primary: 'Inter', sans-serif;
-$font-roboto: 'Roboto', sans-serif;
-$font-display: 'Sequel', sans-serif;
+$font-inter: "Inter", sans-serif;
+$font-roboto: "Roboto", sans-serif;
+$font-sequel: "Sequel", sans-serif;
 
 body {
-  font-family: $font-primary;
+  font-family: $font-inter;
   color: $black-primary;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: $font-display;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-sequel;
 }

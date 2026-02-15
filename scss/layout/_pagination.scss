@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .pagination {
   position: fixed;
   bottom: 20px;
@@ -12,12 +14,12 @@
   &__page {
     width: 3px;
     height: 25px;
-    background-color: #9b9999;
+    background-color: $gray-medium;
     opacity: 0.5;
-    transition: all 0.3s ease;
+    @include transition(all, 0.3s);
 
     &.active {
-      background-color: #fff;
+      background-color: $white-primary;
       opacity: 1;
     }
   }

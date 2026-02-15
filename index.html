@@ -211,7 +211,6 @@
         <!-- Navigation -->
         <button
           class="car-scene__nav car-scene__nav--prev"
-          id="prevCar"
           aria-label="Previous Car"
         >
           <svg
@@ -225,7 +224,6 @@
         </button>
         <button
           class="car-scene__nav car-scene__nav--next"
-          id="nextCar"
           aria-label="Next Car"
         >
           <svg
@@ -287,7 +285,141 @@
             id="sceneMarker"
             aria-label="Toggle Light/Dark Scene"
           >
-            <div class="car-scene__marker-inner"></div>
+            <div class="car-scene__marker-inner">
+              <!-- Original SVG -->
+              <svg
+                class="marker-icon marker-icon--light"
+                width="43"
+                height="43"
+                viewBox="0 0 43 43"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_b_2325_6237)">
+                  <rect
+                    x="1"
+                    y="1"
+                    width="41"
+                    height="41"
+                    rx="20.5"
+                    fill="white"
+                    fill-opacity="0.2"
+                  />
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="42"
+                    height="42"
+                    rx="21"
+                    stroke="white"
+                  />
+                  <mask id="path-3-inside-1_2325_6237" fill="white">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M33.7159 24.2158C32.84 24.402 31.9314 24.5 31 24.5C23.8203 24.5 18 18.6797 18 11.5C18 10.5686 18.0979 9.66007 18.2841 8.78418C12.4081 10.0331 8 15.2518 8 21.5001C8 28.6798 13.8203 34.5001 21 34.5001C27.2483 34.5001 32.4671 30.0919 33.7159 24.2158Z"
+                    />
+                  </mask>
+                  <path
+                    d="M33.7159 24.2158L34.694 24.4237L35.0142 22.9176L33.508 23.2377L33.7159 24.2158ZM18.2841 8.78418L19.2623 8.99207L19.5824 7.48591L18.0762 7.80603L18.2841 8.78418ZM33.508 23.2377C32.7 23.4094 31.8611 23.5 31 23.5V25.5C32.0017 25.5 32.9799 25.3946 33.9238 25.194L33.508 23.2377ZM31 23.5C24.3726 23.5 19 18.1274 19 11.5H17C17 19.2319 23.268 25.5 31 25.5V23.5ZM19 11.5C19 10.6389 19.0905 9.80003 19.2623 8.99207L17.3059 8.57629C17.1054 9.52011 17 10.4983 17 11.5H19ZM9 21.5001C9 15.7336 13.0683 10.9151 18.492 9.76233L18.0762 7.80603C11.7479 9.15105 7 14.7699 7 21.5001H9ZM21 33.5001C14.3726 33.5001 9 28.1275 9 21.5001H7C7 29.232 13.268 35.5001 21 35.5001V33.5001ZM32.7377 24.0079C31.585 29.4317 26.7665 33.5001 21 33.5001V35.5001C27.7302 35.5001 33.3491 30.7521 34.694 24.4237L32.7377 24.0079Z"
+                    fill="white"
+                    mask="url(#path-3-inside-1_2325_6237)"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_b_2325_6237"
+                    x="-54"
+                    y="-54"
+                    width="151"
+                    height="151"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="27" />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_2325_6237"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_2325_6237"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+
+              <!-- New SVG -->
+              <svg
+                class="marker-icon marker-icon--dark"
+                width="43"
+                height="43"
+                viewBox="0 0 43 43"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_b_2325_6131)">
+                  <rect
+                    x="1"
+                    y="1"
+                    width="41"
+                    height="41"
+                    rx="20.5"
+                    fill="white"
+                    fill-opacity="0.2"
+                  />
+                  <rect
+                    x="0.5"
+                    y="0.5"
+                    width="42"
+                    height="42"
+                    rx="21"
+                    stroke="white"
+                  />
+                  <mask id="path-3-inside-1_2325_6131" fill="white">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M21 34.5C28.1797 34.5 34 28.6797 34 21.5C34 14.3203 28.1797 8.5 21 8.5C13.8203 8.5 8 14.3203 8 21.5C8 28.6797 13.8203 34.5 21 34.5Z"
+                    />
+                  </mask>
+                  <path
+                    d="M33 21.5C33 28.1274 27.6274 33.5 21 33.5V35.5C28.732 35.5 35 29.232 35 21.5H33ZM21 9.5C27.6274 9.5 33 14.8726 33 21.5H35C35 13.768 28.732 7.5 21 7.5V9.5ZM9 21.5C9 14.8726 14.3726 9.5 21 9.5V7.5C13.268 7.5 7 13.768 7 21.5H9ZM21 33.5C14.3726 33.5 9 28.1274 9 21.5H7C7 29.232 13.268 35.5 21 35.5V33.5Z"
+                    fill="white"
+                    mask="url(#path-3-inside-1_2325_6131)"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_b_2325_6131"
+                    x="-54"
+                    y="-54"
+                    width="151"
+                    height="151"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feGaussianBlur in="BackgroundImageFix" stdDeviation="27" />
+                    <feComposite
+                      in2="SourceAlpha"
+                      operator="in"
+                      result="effect1_backgroundBlur_2325_6131"
+                    />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="effect1_backgroundBlur_2325_6131"
+                      result="shape"
+                    />
+                  </filter>
+                </defs>
+              </svg>
+            </div>
           </button>
           <div
             class="car-scene__progress-container"
@@ -312,7 +444,24 @@
             alt="mg select logo in black"
           />
         </div>
-        <div class="photo__carousel--text"><p>A New-Era of Luxury</p></div>
+        <div class="photo__carousel--text">
+          <div class="photo__carousel--heading">
+            <p>A New-Era of Luxury</p>
+          </div>
+          <div class="photo__carousel--subheading">
+            <span>A New language of luxury is unfolding.</span>
+            <span
+              >A luxury that is no longer about possessions, but about creating
+              memorable experiences.</span
+            >
+            <span
+              >Where sustainability and innovation, intertwine in perfect
+              harmony.</span
+            >
+            <span>Welcome to the world of new-age luxury.</span>
+            <span>Introducing, MG Select.</span>
+          </div>
+        </div>
         <div class="photo__carousel--images">
           <div class="photo__carousel--track">
             <div class="photo__carousel--image-wrapper">
@@ -558,8 +707,8 @@
           <div class="swiper-wrapper">
             <!-- 1924 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1924</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1924</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1924.webp"
@@ -577,8 +726,8 @@
             </div>
             <!-- 1930 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1930</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1930</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1930.webp"
@@ -596,8 +745,8 @@
             </div>
             <!-- 1933 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1933</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1933</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1933-to-be-edited.webp"
@@ -615,8 +764,8 @@
             </div>
             <!-- 1945 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1945</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1945</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1945.webp"
@@ -634,8 +783,8 @@
             </div>
             <!-- 1956 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1956</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1956</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1956.webp"
@@ -653,8 +802,8 @@
             </div>
             <!-- 1957 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1957</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1957</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1957.webp"
@@ -672,8 +821,8 @@
             </div>
             <!-- 1959 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1959</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1959</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1959.webp"
@@ -691,8 +840,8 @@
             </div>
             <!-- 1962 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1962</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1962</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1962.webp"
@@ -710,8 +859,8 @@
             </div>
             <!-- 1973 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1973</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1973</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1973.webp"
@@ -729,8 +878,8 @@
             </div>
             <!-- 1985 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1985</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1985</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1985.webp"
@@ -748,8 +897,8 @@
             </div>
             <!-- 1995 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">1995</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">1995</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/1995.webp"
@@ -767,8 +916,8 @@
             </div>
             <!-- 2000 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">2000</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">2000</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/2000.webp"
@@ -786,8 +935,8 @@
             </div>
             <!-- 2012 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">2012</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">2012</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/2012.webp"
@@ -805,8 +954,8 @@
             </div>
             <!-- 2018 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">2018</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">2018</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/2018.webp"
@@ -824,8 +973,8 @@
             </div>
             <!-- 2018 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">2018</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">2018</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/mg-india-2018.webp"
@@ -843,8 +992,8 @@
             </div>
             <!-- 2025 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">2025</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">2025</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/showroom-2025.webp"
@@ -862,8 +1011,8 @@
             </div>
             <!-- 2025 -->
             <div class="swiper-slide">
-              <div class="heritage-card__year-label">2025</div>
               <div class="heritage-card">
+                <div class="heritage-card__year-label">2025</div>
                 <div class="heritage-card__image">
                   <img
                     src="/assets/images/page 5/cyberster-2025.webp"
@@ -963,7 +1112,7 @@
                   >
                     <path
                       d="M7 17L17 7M17 7H8M17 7V16"
-                      stroke="currentColor"
+                      stroke="#fff"
                       stroke-width="2"
                       stroke-linecap="round"
                       stroke-linejoin="round"
