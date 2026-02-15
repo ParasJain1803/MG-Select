@@ -1,31 +1,33 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
-  
-    &::-webkit-scrollbar {
-        display: none; 
-    }
+html,
+body {
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
-// scroll effect
 .wrapper {
-    height: 100vh;
-    overflow: hidden; 
+  height: 100vh;
+  overflow: hidden;
 }
 
 .section {
-    height: 100vh;
+  height: 100vh;
 }
 
 .hide {
-    display: none !important;
+  display: none !important;
 }
 
 button {
-    all: unset;
+  all: unset;
 }
