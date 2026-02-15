@@ -10,7 +10,10 @@ const logoDark = document.querySelector(".nav__logo--dark");
 const carScene = document.querySelector("#page2");
 
 const updateNavbar = (activeSection) => {
-  if (activeSection.classList.contains("photo__carousel")) {
+  if (
+    activeSection.classList.contains("photo__carousel") ||
+    activeSection.classList.contains("footer")
+  ) {
     stickyHeader.classList.add("hide-navbar");
   } else {
     stickyHeader.classList.remove("hide-navbar");
@@ -61,16 +64,20 @@ const wrapper = document.querySelector(".wrapper");
 let currentActiveSection = sections[0];
 let isScrolling = false;
 let currentSectionIndex = 0;
-
-// Controlled Smooth Scroll Logic
+let isSubheadingVisible = false;
 const scrollToSection = (index) => {
   if (index < 0 || index >= sections.length || isScrolling) return;
 
   isScrolling = true;
+
+  if (!menuModal.classList.contains("active")) {
+    updateNavbar(sections[index]);
+  }
+
   const start = wrapper.scrollTop;
   const target = index * window.innerHeight;
   const distance = target - start;
-  const duration = 1500; // Slow and smooth
+  const duration = 1500;
   let startTimestamp = null;
 
   const step = (timestamp) => {
@@ -90,22 +97,33 @@ const scrollToSection = (index) => {
     if (progress < 1) {
       window.requestAnimationFrame(step);
     } else {
+      const isComingFromBelow = currentSectionIndex > index;
+
       currentSectionIndex = index;
       currentActiveSection = sections[index];
+      if (index === 2) {
+        if (isComingFromBelow) {
+          isSubheadingVisible = true;
+          currentActiveSection.classList.add("showing-subheading");
+        } else {
+          isSubheadingVisible = false;
+          currentActiveSection.classList.remove("showing-subheading");
+        }
+      }
+
       if (!menuModal.classList.contains("active")) {
         updateNavbar(currentActiveSection);
       }
-      // Cooldown to prevent immediate accidental scrolls
+
       setTimeout(() => {
         isScrolling = false;
-      }, 150);
+      }, 500);
     }
   };
 
   window.requestAnimationFrame(step);
 };
 
-// Event Listeners for Scrolling
 window.addEventListener(
   "wheel",
   (e) => {
@@ -116,8 +134,28 @@ window.addEventListener(
 
     if (Math.abs(e.deltaY) > 30) {
       if (e.deltaY > 0) {
+        // Scroll Down
+        if (currentSectionIndex === 2 && !isSubheadingVisible) {
+          isScrolling = true;
+          isSubheadingVisible = true;
+          currentActiveSection.classList.add("showing-subheading");
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1200);
+          return;
+        }
         scrollToSection(currentSectionIndex + 1);
       } else {
+        // Scroll Up
+        if (currentSectionIndex === 2 && isSubheadingVisible) {
+          isScrolling = true;
+          isSubheadingVisible = false;
+          currentActiveSection.classList.remove("showing-subheading");
+          setTimeout(() => {
+            isScrolling = false;
+          }, 1200);
+          return;
+        }
         scrollToSection(currentSectionIndex - 1);
       }
     }
@@ -126,41 +164,6 @@ window.addEventListener(
   { passive: false },
 );
 
-let touchStartY = 0;
-window.addEventListener(
-  "touchstart",
-  (e) => {
-    touchStartY = e.touches[0].clientY;
-  },
-  { passive: false },
-);
-
-window.addEventListener(
-  "touchmove",
-  (e) => {
-    if (isScrolling) {
-      e.preventDefault();
-      return;
-    }
-
-    const touchEndY = e.touches[0].clientY;
-    const deltaY = touchStartY - touchEndY;
-
-    if (Math.abs(deltaY) > 60) {
-      if (deltaY > 0) {
-        scrollToSection(currentSectionIndex + 1);
-      } else {
-        scrollToSection(currentSectionIndex - 1);
-      }
-      touchStartY = touchEndY;
-    }
-    e.preventDefault();
-  },
-  { passive: false },
-);
-
-// Original IntersectionObserver replaced by scroll index tracking,
-// but we keep the listener for pagination dots if needed.
 wrapper.addEventListener("scroll", function () {
   const pageIds = ["page1", "page2", "page3", "page4", "page5", "page6"];
   const dots = document.querySelectorAll(".pagination__page");
@@ -176,7 +179,6 @@ wrapper.addEventListener("scroll", function () {
         scrollPosition < sectionTop + sectionHeight
       ) {
         if (dots[index]) dots[index].classList.add("active");
-        // Only update currentSectionIndex if not currently animating to avoid jumps
         if (!isScrolling) currentSectionIndex = index;
       } else {
         if (dots[index]) dots[index].classList.remove("active");
@@ -206,7 +208,6 @@ hamburger.addEventListener("click", () => {
   }
 });
 
-// Modal Vehicle Interaction
 const modalVehicleItems = document.querySelectorAll(
   ".menu-modal__vehicle-item",
 );
@@ -259,8 +260,8 @@ if (volumeBtn && video) {
 
 // Car Scene Logic
 const sceneMarker = document.getElementById("sceneMarker");
-const prevCarBtn = document.getElementById("prevCar");
-const nextCarBtn = document.getElementById("nextCar");
+const prevCarBtn = document.querySelector(".car-scene__nav--prev");
+const nextCarBtn = document.querySelector(".car-scene__nav--next");
 const carTitle = document.querySelector(".car-scene__title");
 const carSubtitle = document.querySelector(".car-scene__subtitle");
 const progressFill = document.querySelector(".car-scene__progress-fill");
@@ -270,62 +271,60 @@ const carData = [
   { title: "MG M9", subtitle: "Redefining excellence in every journey." },
 ];
 
-if (carScene && sceneMarker && prevCarBtn && nextCarBtn) {
-  const carouselEl = document.getElementById("carCarousel");
-  const carouselItems = carouselEl.querySelectorAll(".carousel-item");
-  let carCurrentIndex = 0;
-  let isCarAnimating = false;
+const carouselEl = document.getElementById("carCarousel");
+const carouselItems = carouselEl.querySelectorAll(".carousel-item");
+let carCurrentIndex = 0;
+let isCarAnimating = false;
 
-  sceneMarker.addEventListener("click", () => {
-    carScene.classList.toggle("is-dark");
-    if (!menuModal.classList.contains("active")) {
-      updateNavbar(carScene);
-    }
-  });
+sceneMarker.addEventListener("click", () => {
+  carScene.classList.toggle("is-dark");
+  if (!menuModal.classList.contains("active")) {
+    updateNavbar(carScene);
+  }
+});
 
-  const switchCar = () => {
-    if (isCarAnimating) return;
-    isCarAnimating = true;
-    const currentItem = carouselItems[carCurrentIndex];
-    const nextIndex = (carCurrentIndex + 1) % carouselItems.length;
-    const nextItem = carouselItems[nextIndex];
+const switchCar = () => {
+  if (isCarAnimating) return;
+  isCarAnimating = true;
+  const currentItem = carouselItems[carCurrentIndex];
+  const nextIndex = (carCurrentIndex + 1) % carouselItems.length;
+  const nextItem = carouselItems[nextIndex];
 
-    nextItem.classList.add("is-preparing");
-    void nextItem.offsetWidth;
+  nextItem.classList.add("is-preparing");
+  void nextItem.offsetWidth;
 
-    currentItem.classList.remove("active");
-    currentItem.classList.add("exiting");
+  currentItem.classList.remove("active");
+  currentItem.classList.add("exiting");
 
-    nextItem.classList.remove("is-preparing");
-    nextItem.classList.add("entering");
+  nextItem.classList.remove("is-preparing");
+  nextItem.classList.add("entering");
 
-    if (carTitle) carTitle.textContent = carData[nextIndex].title;
-    if (carSubtitle) carSubtitle.textContent = carData[nextIndex].subtitle;
-    if (progressFill) {
-      progressFill.style.width = "50%";
-      progressFill.style.left = nextIndex === 0 ? "0%" : "50%";
-    }
+  if (carTitle) carTitle.textContent = carData[nextIndex].title;
+  if (carSubtitle) carSubtitle.textContent = carData[nextIndex].subtitle;
+  if (progressFill) {
+    progressFill.style.width = "50%";
+    progressFill.style.left = nextIndex === 0 ? "0%" : "50%";
+  }
 
-    nextItem.addEventListener(
-      "transitionend",
-      function cleanup() {
-        nextItem.removeEventListener("transitionend", cleanup);
-        currentItem.classList.remove("exiting");
-        nextItem.classList.remove("entering");
-        nextItem.classList.add("active");
-        carCurrentIndex = nextIndex;
-        isCarAnimating = false;
-      },
-      { once: true },
-    );
-  };
+  nextItem.addEventListener(
+    "transitionend",
+    function cleanup() {
+      nextItem.removeEventListener("transitionend", cleanup);
+      currentItem.classList.remove("exiting");
+      nextItem.classList.remove("entering");
+      nextItem.classList.add("active");
+      carCurrentIndex = nextIndex;
+      isCarAnimating = false;
+    },
+    { once: true },
+  );
+};
 
-  nextCarBtn.addEventListener("click", switchCar);
-  prevCarBtn.addEventListener("click", switchCar);
-}
+nextCarBtn.addEventListener("click", switchCar);
+prevCarBtn.addEventListener("click", switchCar);
 
-// Heritage Swiper Initialization
-const initHeritageSwiper = () => {
+// Heritage Swiper
+const HeritageSwiper = () => {
   new Swiper(".heritageSwiper", {
     slidesPerView: "auto",
     spaceBetween: 0,
@@ -336,30 +335,4 @@ const initHeritageSwiper = () => {
   });
 };
 
-// // Photo Carousel Text Animation (Intersection Observer)
-// const initPhotoCarouselAnimation = () => {
-//   const photoCarouselSection = document.querySelector(".photo__carousel");
-//   const photoCarouselText = document.querySelector(".photo__carousel--text p");
-
-//   if (!photoCarouselSection || !photoCarouselText) return;
-
-//   const observerOptions = {
-//     threshold: 0.3, // Trigger when 30% of the section is visible
-//   };
-
-//   const observer = new IntersectionObserver((entries) => {
-//     entries.forEach((entry) => {
-//       if (entry.isIntersecting) {
-//         photoCarouselText.classList.add("animate-title");
-//       } else {
-//         // Optionally remove class if we want it to re-animate when scrolling back
-//         photoCarouselText.classList.remove("animate-title");
-//       }
-//     });
-//   }, observerOptions);
-
-//   observer.observe(photoCarouselSection);
-// };
-
-initHeritageSwiper();
-// initPhotoCarouselAnimation();
+HeritageSwiper();
