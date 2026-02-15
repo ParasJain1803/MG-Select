@@ -1,13 +1,24 @@
-$black-primary:        rgb(0, 0, 0);          
-$white-primary:        rgb(255, 255, 255);    
+$black-primary: rgb(0, 0, 0);
+$white-primary: rgb(255, 255, 255);
 
-$white-05:    rgba(255, 255, 255, .05);
-$white-10:    rgba(255, 255, 255, .1);
-$white-15:    rgba(255, 255, 255, .15);
-$white-30:    rgba(255, 255, 255, .3);
+$white-05: rgba(255, 255, 255, 0.05);
+$white-10: rgba(255, 255, 255, 0.1);
+$white-15: rgba(255, 255, 255, 0.15);
+$white-30: rgba(255, 255, 255, 0.3);
 
 $footer-bg: #1e1e20;
-$footer-text:    #787879;
+$footer-text: #787879;
 
-$black-dark:        rgb(30, 30, 30);       
-$black-shadow-30:   rgba(0, 0, 0, .3);
+$black-dark: rgb(30, 30, 30);
+$black-shadow-05: rgba(0, 0, 0, 0.05);
+$black-shadow-10: rgba(0, 0, 0, 0.1);
+$black-shadow-30: rgba(0, 0, 0, 0.3);
+$black-shadow-40: rgba(0, 0, 0, 0.4);
+$black-shadow-50: rgba(0, 0, 0, 0.5);
+
+$gray-medium: #9b9999;
+$gray-charcoal: #2b2b2b;
+$gray-brown: rgb(46, 37, 37);
+
+$red-primary: #ff4d4d;
+$red-light: #ffe5e5;

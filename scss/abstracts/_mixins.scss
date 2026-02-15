@@ -9,6 +9,6 @@
   inset: 0;
 }
 
-@mixin transition($prop: all, $time: 1s) {
-  transition: $prop $time cubic-bezier(0.4, 0, 0.2, 1);
+@mixin transition($anime: all, $time: 1s) {
+  transition: $anime $time cubic-bezier(0.075, 0.82, 0.165, 1);
 }

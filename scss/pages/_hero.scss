@@ -6,8 +6,6 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 
   &--wrapper {
     position: relative;
@@ -43,7 +41,7 @@
     z-index: 100;
 
     &--text {
-      font-family: $font-display;
+      font-family: $font-sequel;
       font-size: 30px;
       font-weight: 400;
       color: $white-primary;
@@ -51,27 +49,27 @@
     }
 
     &--cta {
-      font-family: $font-display;
+      font-family: $font-sequel;
       font-size: 16px;
       font-weight: 200;
       letter-spacing: 0.16px;
       margin-top: 28px;
-      width: 100%; 
+      width: 100%;
       display: block;
-      color: $white-primary; 
+      color: $white-primary;
     }
   }
 
   &__btn {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     border: 1px solid $white-primary;
     width: 50%;
     padding: 8px 20px;
     background: transparent;
     cursor: pointer;
-    transition: all 0.3s ease;
+    @include transition(all, 0.3s);
 
     &--text {
       font-size: 14px;
@@ -94,7 +92,6 @@
     display: flex;
     align-items: center;
     gap: 15px;
-
   }
 
   &__volume {
@@ -105,18 +102,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   
+
     &--icon {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      
+
       svg {
         width: 100%;
         height: 100%;
-        
+
         path {
           stroke: $white-primary;
           stroke-width: 1;

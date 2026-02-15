@@ -1,303 +1,323 @@
-@use '../abstracts' as *;
-@use '../base' as *; 
+@use "../abstracts" as *;
+@use "../base" as *;
 
 .car-scene {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  color: $white-primary;
+  background-color: $black-primary;
+  font-family: "Inter", sans-serif;
+
+  &__backgrounds {
+    @include absolute-inset;
+    z-index: 1;
+  }
+
+  &__bg {
+    @include absolute-inset;
+    background-size: cover;
+    background-position: center;
+    @include transition(opacity);
+
+    &--light {
+      opacity: 1;
+      z-index: 1;
+      background-image: url("../../assets/images/page 2/day-bg.webp");
+    }
+
+    &--dark {
+      opacity: 0;
+      z-index: 2;
+      background-image: url("../../assets/images/page 2/night-bg.webp");
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__visuals {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1800px;
+    height: 100vh;
+    z-index: 2;
+    pointer-events: none;
+    @include center;
+    align-items: flex-end;
+
+    .carousel,
+    .carousel-inner {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .carousel-item {
+      @include absolute-inset;
+      @include center;
+      align-items: flex-end;
+      visibility: hidden;
+      pointer-events: none;
+      z-index: 1;
+      transform: translateX(100%);
+
+      &.active {
+        visibility: visible;
+        pointer-events: auto;
+        z-index: 5;
+        transform: translateX(0);
+      }
+
+      &.exiting {
+        visibility: visible;
+        z-index: 4;
+        @include transition(transform, 0.6s);
+        transform: translateX(-100%);
+      }
+
+      &.entering {
+        visibility: visible;
+        z-index: 5;
+        @include transition(transform, 0.6s);
+        transform: translateX(0);
+      }
+
+      &.is-preparing {
+        visibility: visible;
+        transform: translateX(100%);
+        transition: none !important;
+      }
+    }
+  }
+
+  &__car-item {
     position: relative;
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    height: 100%;
+    @include center;
+    align-items: flex-end;
+    pointer-events: none;
+    will-change: transform;
+
+    .active &,
+    .exiting &,
+    .entering & {
+      pointer-events: auto;
+    }
+  }
+
+  &__car-main {
+    @include absolute-inset;
+    width: 100%;
+    @include transition(opacity);
+    will-change: opacity;
+    @include center;
+    align-items: flex-end;
+
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+      display: block;
+      filter: drop-shadow(0 20px 50px $black-shadow-30);
+    }
+
+    &--light {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    &--dark {
+      opacity: 0;
+      z-index: 2;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: $white-05;
+    backdrop-filter: blur(15px);
+    border: 1px solid $white-10;
     color: $white-primary;
-    background-color: $black-primary; 
-    font-family: 'Inter', sans-serif;
+    @include center;
+    cursor: pointer;
+    padding: 0;
+    @include transition(all, 0.4s);
 
-    // Background Layer
-    &__backgrounds {
-        @include absolute-inset;
-        z-index: 1;
+    svg {
+      width: 24px;
+      height: 24px;
+      opacity: 0.8;
     }
 
-    &__bg {
-        @include absolute-inset;
-        background-size: cover;
-        background-position: center;
-        @include transition(opacity);
-        
-        &--light {
-            opacity: 1;
-            z-index: 1;
-            background-image: url('../../assets/images/page 2/day-bg.webp');
-        }
+    &--prev {
+      left: 40px;
+    }
+    &--next {
+      right: 40px;
+    }
+  }
 
-        &--dark {
-            opacity: 0;
-            z-index: 2;
-            background-image: url('../../assets/images/page 2/night-bg.webp');
-        }
+  &__content {
+    position: absolute;
+    bottom: 15%;
+    left: 50px;
+    z-index: 10;
+    min-width: 538px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+  &__title {
+    font-size: clamp(30px, 3.5vw, 48px);
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  &__subtitle {
+    font-size: clamp(13px, 1.5vw, 16px);
+    font-weight: 400;
+    padding: 15px 0;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    font-family: $font-roboto;
+    @include transition(all, 0.3s);
+
+    svg {
+      width: 18px;
+      height: 18px;
     }
 
-    &__visuals {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 1800px; 
-        height: 100vh; 
-        z-index: 2;
-        pointer-events: none;
-        @include center;
-        align-items: flex-end;
-
-        .carousel, .carousel-inner {
-            width: 100%;
-            height: 100%;
-            overflow: visible;
-        }
-
-        .carousel-item {
-            @include absolute-inset;
-            @include center;
-            align-items: flex-end;
-            visibility: hidden;
-            pointer-events: none;
-            z-index: 1;
-            transform: translateX(100%); 
-
-            &.active {
-                visibility: visible;
-                pointer-events: auto;
-                z-index: 5;
-                transform: translateX(0);
-            }
-
-            &.exiting {
-                visibility: visible;
-                z-index: 4;
-                transition: transform 0.6s ease-in-out;
-                transform: translateX(-100%);
-            }
-
-            &.entering {
-                visibility: visible;
-                z-index: 5;
-                transition: transform 0.6s ease-in-out;
-                transform: translateX(0);
-            }
-
-            
-            &.is-preparing {
-                visibility: visible;
-                transform: translateX(100%);
-                transition: none !important;
-            }
-        }
+    &--explore {
+      padding: 14px 30px;
+      border: 1px solid $white-primary;
+      border-radius: 2px;
+      width: 278px;
     }
 
-    &__car-item {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        @include center;
-        align-items: flex-end;
-        pointer-events: none;
-        will-change: transform;
+    &--download {
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+    }
+  }
 
-        .active &, .exiting &, .entering & {
-            pointer-events: auto;
-        }
+  &__bottom {
+    position: absolute;
+    bottom: 25px;
+    left: 50px;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    gap: 260px;
+    z-index: 10;
+  }
+
+  &__marker {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    @include center;
+    cursor: pointer;
+    @include transition(transform, 0.3s);
+
+    &-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      @include center;
     }
 
-    &__car-main {
-        @include absolute-inset;
-        width: 100%;
-        @include transition(opacity);
-        will-change: opacity;
-        @include center;
-        align-items: flex-end;
+    .marker-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      @include transition(opacity);
 
-        img {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
-            object-fit: contain;
-            margin: 0 auto;
-            display: block;
-            filter: drop-shadow(0 20px 50px $black-shadow-30);
-        }
+      &--dark {
+        opacity: 0;
+      }
 
-        &--light {
-            opacity: 1;
-            z-index: 1;
-        }
+      &--light {
+        opacity: 1;
+      }
+    }
+  }
 
-        &--dark {
-            opacity: 0;
-            z-index: 2;
-        }
+  &__progress-container {
+    flex: 1;
+    height: 1px;
+    background: $white-15;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__progress-fill {
+    position: absolute;
+    left: 0;
+    top: -0.5px;
+    height: 2px;
+    width: 50%;
+    background: $white-primary;
+    @include transition(all, 0.3s);
+  }
+
+  &.is-dark {
+    .car-scene__bg--light {
+      opacity: 1;
+      z-index: 1;
+    }
+    .car-scene__bg--dark {
+      opacity: 1;
+      z-index: 2;
     }
 
-    // --- Navigation Arrows ---
-    &__nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 10;
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        background: $white-05;
-        backdrop-filter: blur(15px);
-        border: 1px solid $white-10;
-        color: $white-primary;
-        @include center;
-        cursor: pointer;
-        padding: 0;
-        @include transition(all, 0.4s);
-
-        svg {
-            width: 24px;
-            height: 24px;
-            opacity: 0.8;
-        }
-
-        &--prev { left: 40px; }
-        &--next { right: 40px; }
+    .car-scene__car-main--light {
+      opacity: 0;
+    }
+    .car-scene__car-main--dark {
+      opacity: 1;
     }
 
-    // Hero Content (Bottom Left)
-    &__content {
-        position: absolute;
-        bottom: 15%;
-        left: 50px;
-        z-index: 10;
-        min-width: 538px;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    .marker-icon--light {
+      opacity: 0;
     }
-
-    &__title {
-        font-size: clamp(30px, 3.5vw, 48px);
-        font-weight: 700;
-        margin-bottom: 8px;
-        line-height: 1;
+    .marker-icon--dark {
+      opacity: 1;
     }
-
-    &__subtitle {
-        font-size: clamp(13px, 1.5vw, 16px);
-        font-weight: 400;
-        padding: 15px 0;
-    }
-
-    &__actions {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-    }
-
-    &__btn {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 12px;
-        text-decoration: none;
-        color: inherit;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        font-family: $font-roboto;
-        @include transition(all, 0.3s);
-
-        svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        &--explore {
-            padding: 14px 30px;
-            border: 1px solid $white-primary;
-            border-radius: 2px;
-            width: 278px;
-
-        }
-
-        &--download {
-            border-bottom: 1px solid transparent;
-            padding-bottom: 4px;
-
-           
-        }
-    }
-
-    // Bottom UI (Marker & Progress)
-    &__bottom {
-        position: absolute;
-        bottom: 25px;
-        left: 50px;
-        width: 100%;
-        max-width: 900px;
-        display: flex;
-        align-items: center;
-        gap: 260px;
-        z-index: 10;
-    }
-
-    &__marker {
-        position: relative;
-        width: 24px;
-        height: 24px;
-        border: 2px solid $white-primary;
-        border-radius: 50%;
-        @include center;
-        flex-shrink: 0;
-        cursor: pointer;
-        @include transition(transform, 0.3s);
-
-       
-    }
-
-    &__progress-container {
-        flex: 1;
-        height: 1px;
-        background: $white-15;
-        position: relative;
-        cursor: pointer;
-    }
-
-    &__progress-fill {
-        position: absolute;
-        left: 0;
-        top: -0.5px;
-        height: 2px;
-        width: 50%; // Fixed width
-        background: $white-primary;
-        @include transition(all, 0.3s); // Snappy transition for position
-    }
-
-    // --- Dark Mode State ---
-    &.is-dark {
-        .car-scene__bg--light { 
-            opacity: 1; // Keep visible underneath to prevent gaps
-            z-index: 1; 
-        }
-        .car-scene__bg--dark { 
-            opacity: 1; 
-            z-index: 2; 
-        }
-
-        .car-scene__car-main--light { 
-            opacity: 0; 
-        }
-        .car-scene__car-main--dark { 
-            opacity: 1; 
-        }
-    }
+  }
 }
