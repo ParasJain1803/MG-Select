@@ -18,7 +18,7 @@
     @include absolute-inset;
     background-size: cover;
     background-position: center;
-    @include transition(opacity);
+    transition: opacity 1s ease-in-out;
 
     &--light {
       opacity: 1;
@@ -32,7 +32,7 @@
       background-image: url("../../assets/images/page 2/night-bg.webp");
     }
 
-    img {
+    &-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -77,14 +77,14 @@
       &.exiting {
         visibility: visible;
         z-index: 4;
-        @include transition(transform, 0.6s);
+        transition: transform 0.6s ease-in-out;
         transform: translateX(-100%);
       }
 
       &.entering {
         visibility: visible;
         z-index: 5;
-        @include transition(transform, 0.6s);
+        transition: transform 0.6s ease-in-out;
         transform: translateX(0);
       }
 
@@ -115,12 +115,12 @@
   &__car-main {
     @include absolute-inset;
     width: 100%;
-    @include transition(opacity);
+    transition: opacity 1s ease-in-out;
     will-change: opacity;
     @include center;
     align-items: flex-end;
 
-    img {
+    &-img {
       width: 100%;
       height: auto;
       max-height: 100%;
@@ -156,9 +156,9 @@
     @include center;
     cursor: pointer;
     padding: 0;
-    @include transition(all, 0.4s);
+    transition: all 0.4s ease-in-out;
 
-    svg {
+    &-svg {
       width: 24px;
       height: 24px;
       opacity: 0.8;
@@ -214,9 +214,9 @@
     font-weight: 400;
     letter-spacing: 0.1em;
     font-family: $font-roboto;
-    @include transition(all, 0.3s);
+    transition: all 0.4s ease-in-out;
 
-    svg {
+    &-svg {
       width: 18px;
       height: 18px;
     }
@@ -252,7 +252,7 @@
     height: 24px;
     @include center;
     cursor: pointer;
-    @include transition(transform, 0.3s);
+    transition: transform 0.4s ease-in-out;
 
     &-inner {
       position: relative;
@@ -266,7 +266,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      @include transition(opacity);
+      transition: opacity 1s ease-in-out;
 
       &--dark {
         opacity: 0;
@@ -293,7 +293,7 @@
     height: 2px;
     width: 50%;
     background: $white-primary;
-    @include transition(all, 0.3s);
+    transition: all 0.4s ease-in-out;
   }
 
   &.is-dark {

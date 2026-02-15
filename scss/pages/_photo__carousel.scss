@@ -40,8 +40,9 @@
     font-family: $font-sequel;
     font-size: 40px;
     position: absolute;
-    @include transition(transform, 1.2s);
-    @include transition(opacity, 1s);
+    transition:
+      transform 1.2s ease-in-out,
+      opacity 1s ease-in-out;
     opacity: 1;
     transform: translateY(0);
 
@@ -64,8 +65,9 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    @include transition(transform, 1.2s);
-    @include transition(opacity, 1s);
+    transition:
+      transform 1.2s ease-in-out,
+      opacity 1s ease-in-out;
     opacity: 0;
     transform: translateY(100px);
 

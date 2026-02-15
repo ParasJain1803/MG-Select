@@ -34,7 +34,7 @@
         gap: 15px;
         flex-wrap: wrap;
 
-        input {
+        &--input {
           background: $black-dark;
           border: 1px solid $white-10;
           padding: 0 20px;
@@ -58,7 +58,7 @@
           height: 50px;
           background: transparent;
           cursor: pointer;
-          @include transition(all, 0.3s);
+          transition: all 0.3s ease;
           gap: 15px;
 
           &--text {
@@ -84,20 +84,14 @@
         color: $white-30;
         font-size: 14px;
 
-        input {
+        &--input {
           width: 16px;
           height: 16px;
           cursor: pointer;
           accent-color: $white-primary;
         }
 
-        p {
-          margin: 0;
-          font-family: $font-inter;
-          font-size: 14px;
-        }
-
-        a {
+        &--link {
           color: inherit;
           text-decoration: underline;
           font-family: $font-inter;
@@ -121,7 +115,7 @@
       font-family: $font-inter;
     }
 
-    & > div {
+    &--divs {
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -135,7 +129,7 @@
       font-size: 16px;
       letter-spacing: 1px;
       font-family: $font-roboto;
-      @include transition(color, 0.3s);
+      transition: color 0.3s;
       line-height: 1.5;
       font-weight: 3 00;
     }
@@ -160,10 +154,10 @@
       font-weight: 400;
       flex-wrap: wrap;
 
-      a {
+      &_link {
         text-decoration: none;
         color: inherit;
-        @include transition(color, 0.3s);
+        transition: color 0.3s ease;
       }
     }
 
@@ -172,19 +166,18 @@
       gap: 25px;
       align-items: center;
 
-      a {
+      &_link {
         display: flex;
         align-items: center;
         opacity: 0.6;
-        @include transition(opacity, 0.3s);
+        transition: opacity 0.3s ease;
         color: $footer-text;
-
-        svg {
-          width: 17px;
-          height: 17px;
-          fill: currentColor;
-        }
       }
+    }
+    &--icon {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
     }
   }
 }
