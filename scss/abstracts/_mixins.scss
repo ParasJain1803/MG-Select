@@ -8,7 +8,3 @@
   position: absolute;
   inset: 0;
 }
-
-@mixin transition($anime: all, $time: 1s) {
-  transition: $anime $time cubic-bezier(0.075, 0.82, 0.165, 1);
-}

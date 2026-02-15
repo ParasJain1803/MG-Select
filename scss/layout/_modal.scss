@@ -11,7 +11,7 @@
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  @include transition(all, 0.5s);
+  transition: all 0.5s ease-in-out;
   display: flex !important;
   flex-direction: column;
   padding: 0 40px;
@@ -44,7 +44,7 @@
       border: none;
       cursor: pointer;
       padding: 0;
-      @include transition(color, 0.3s);
+      transition: color 0.3s ease;
 
       &.active {
         color: $black-primary;
@@ -72,7 +72,7 @@
     .menu-modal__vehicle-item {
       padding: 30px 20px;
       cursor: pointer;
-      @include transition(all, 0.3s);
+      transition: all 0.3s ease;
       position: relative;
 
       &.active {

@@ -77,7 +77,7 @@ const scrollToSection = (index) => {
   const start = wrapper.scrollTop;
   const target = index * window.innerHeight;
   const distance = target - start;
-  const duration = 1500;
+  const duration = 1000;
   let startTimestamp = null;
 
   const step = (timestamp) => {
@@ -141,7 +141,7 @@ window.addEventListener(
           currentActiveSection.classList.add("showing-subheading");
           setTimeout(() => {
             isScrolling = false;
-          }, 1200);
+          }, 1000);
           return;
         }
         scrollToSection(currentSectionIndex + 1);
@@ -153,7 +153,7 @@ window.addEventListener(
           currentActiveSection.classList.remove("showing-subheading");
           setTimeout(() => {
             isScrolling = false;
-          }, 1200);
+          }, 1000);
           return;
         }
         scrollToSection(currentSectionIndex - 1);
