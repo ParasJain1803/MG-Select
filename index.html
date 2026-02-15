@@ -56,7 +56,7 @@
       <section id="page1" class="hero section" aria-label="Hero Section">
         <div class="hero--wrapper">
           <div class="hero__video">
-            <video autoplay loop muted playsinline>
+            <video class="hero__video-tag" autoplay loop muted playsinline>
               <source
                 src="https://mgmotor.scene7.com/is/content/mgmotor/MG%20Cyberster%20Coastal%20Film%20(Social%20Media)-0x720-3000k"
               />
@@ -93,6 +93,7 @@
             <button class="hero__volume" aria-label="Toggle Mute">
               <div class="hero__volume--icon hero__volume--on hide">
                 <svg
+                  class="hero__volume--icon-svg"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
@@ -118,6 +119,7 @@
               </div>
               <div class="hero__volume--icon hero__volume--off">
                 <svg
+                  class="hero__volume--icon-svg"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
@@ -154,10 +156,18 @@
       >
         <div class="car-scene__backgrounds" aria-hidden="true">
           <div class="car-scene__bg car-scene__bg--light">
-            <img src="./assets/images/page 2/day-bg.webp" alt="" />
+            <img
+              class="car-scene__bg-img"
+              src="./assets/images/page 2/day-bg.webp"
+              alt=""
+            />
           </div>
           <div class="car-scene__bg car-scene__bg--dark">
-            <img src="./assets/images/page 2/night-bg.webp" alt="" />
+            <img
+              class="car-scene__bg-img"
+              src="./assets/images/page 2/night-bg.webp"
+              alt=""
+            />
           </div>
         </div>
 
@@ -174,12 +184,14 @@
                 <div class="car-scene__car-item">
                   <div class="car-scene__car-main car-scene__car-main--light">
                     <img
+                      class="car-scene__car-main-img"
                       src="./assets/images/page 2/cyberster-day-full.webp"
                       alt="MG Cyberster Light Mode"
                     />
                   </div>
                   <div class="car-scene__car-main car-scene__car-main--dark">
                     <img
+                      class="car-scene__car-main-img"
                       src="./assets/images/page 2/cyberter-night-full.webp"
                       alt="MG Cyberster Dark Mode"
                     />
@@ -192,12 +204,14 @@
                 <div class="car-scene__car-item">
                   <div class="car-scene__car-main car-scene__car-main--light">
                     <img
+                      class="car-scene__car-main-img"
                       src="./assets/images/page 2/m9-day-full.webp"
                       alt="MG M9 Light Mode"
                     />
                   </div>
                   <div class="car-scene__car-main car-scene__car-main--dark">
                     <img
+                      class="car-scene__car-main-img"
                       src="./assets/images/page 2/m9-night-full.webp"
                       alt="MG M9 Dark Mode"
                     />
@@ -214,6 +228,7 @@
           aria-label="Previous Car"
         >
           <svg
+            class="car-scene__nav-svg"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -227,6 +242,7 @@
           aria-label="Next Car"
         >
           <svg
+            class="car-scene__nav-svg"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -249,6 +265,7 @@
               >
                 EXPLORE NOW
                 <svg
+                  class="car-scene__btn-svg"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -265,6 +282,7 @@
               >
                 DOWNLOAD BROCHURE
                 <svg
+                  class="car-scene__btn-svg"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -1099,7 +1117,11 @@
           <div class="footer__top--right">
             <p class="footer__top--right_title">Subscribe to our newsletter</p>
             <div class="footer__forms">
-              <input type="email" placeholder="Enter email" />
+              <input
+                class="footer__forms--input"
+                type="email"
+                placeholder="Enter email"
+              />
               <button class="footer__btn">
                 <span class="footer__btn--text">SIGN UP</span>
                 <div class="footer__btn--icon">
@@ -1122,33 +1144,39 @@
               </button>
             </div>
             <div class="footer__checkbox">
-              <input type="checkbox" id="agree" />
+              <input
+                class="footer__checkbox--input"
+                type="checkbox"
+                id="agree"
+              />
               <label for="agree"
-                >I agree to the <a href="#">Privacy Policy</a>.</label
+                >I agree to the
+                <a class="footer__checkbox--link" href="#">Privacy Policy</a
+                >.</label
               >
             </div>
           </div>
         </div>
 
         <div class="footer__middle">
-          <div class="footer__middle--1">
+          <div class="footer__middle--divs footer__middle--1">
             <div class="footer__middle--title">Cyberster</div>
             <a class="footer__middle--link" href="#">E-BOOK</a>
             <a class="footer__middle--link" href="#">Test Drive</a>
             <a class="footer__middle--link" href="#">Register Interest</a>
           </div>
-          <div class="footer__middle--2">
+          <div class="footer__middle--divs footer__middle--2">
             <div class="footer__middle--title">M9</div>
             <a class="footer__middle--link" href="#">E-BOOK</a>
             <a class="footer__middle--link" href="#">Test Drive</a>
             <a class="footer__middle--link" href="#">Register Interest</a>
           </div>
-          <div class="footer__middle--3">
+          <div class="footer__middle--divs footer__middle--3">
             <div class="footer__middle--title">Network</div>
             <a class="footer__middle--link" href="#">Showroom Locator</a>
             <a class="footer__middle--link" href="#">Service Center Locator</a>
           </div>
-          <div class="footer__middle--4">
+          <div class="footer__middle--divs footer__middle--4">
             <div class="footer__middle--title">Contact Us</div>
             <a class="footer__middle--link" href="tel:18005700000"
               >Call Us at: 18005700000</a
@@ -1162,13 +1190,18 @@
         <div class="footer__bottom">
           <div class="footer__bottom--left">
             <div>@2026 | MG SELECT</div>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Referral Program</a>
+            <a class="footer__bottom--left_link" href="#">Privacy Policy</a>
+            <a class="footer__bottom--left_link" href="#">Terms of Service</a>
+            <a class="footer__bottom--left_link" href="#">Referral Program</a>
           </div>
           <div class="footer__bottom--right">
-            <a href="#" aria-label="Instagram">
+            <a
+              class="footer__bottom--right_link"
+              href="#"
+              aria-label="Instagram"
+            >
               <svg
+                class="footer__bottom--icon"
                 width="17px"
                 height="17px"
                 viewBox="0 0 24 24"
@@ -1193,8 +1226,9 @@
                 ></path>
               </svg>
             </a>
-            <a href="#" aria-label="Twitter">
+            <a class="footer__bottom--right_link" href="#" aria-label="Twitter">
               <svg
+                class="footer__bottom--icon"
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
                 y="0px"
@@ -1226,8 +1260,13 @@
                 </g>
               </svg>
             </a>
-            <a href="#" aria-label="LinkedIn">
+            <a
+              class="footer__bottom--right_link"
+              href="#"
+              aria-label="LinkedIn"
+            >
               <svg
+                class="footer__bottom--icon"
                 width="17px"
                 height="17px"
                 viewBox="0 0 24 24"

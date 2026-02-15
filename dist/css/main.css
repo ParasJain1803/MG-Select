@@ -88,7 +88,7 @@ h6 {
   gap: 15px;
   flex-wrap: wrap;
 }
-.footer__top--right .footer__forms input {
+.footer__top--right .footer__forms--input {
   background: rgb(30, 30, 30);
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 0 20px;
@@ -97,11 +97,11 @@ h6 {
   color: rgb(255, 255, 255);
   outline: none;
 }
-.footer__top--right .footer__forms input::-moz-placeholder {
+.footer__top--right .footer__forms--input::-moz-placeholder {
   font-family: "Inter", sans-serif;
   color: rgba(255, 255, 255, 0.3);
 }
-.footer__top--right .footer__forms input::placeholder {
+.footer__top--right .footer__forms--input::placeholder {
   font-family: "Inter", sans-serif;
   color: rgba(255, 255, 255, 0.3);
 }
@@ -114,7 +114,7 @@ h6 {
   height: 50px;
   background: transparent;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s ease;
   gap: 15px;
 }
 .footer__top--right .footer__forms .footer__btn--text {
@@ -136,18 +136,13 @@ h6 {
   color: rgba(255, 255, 255, 0.3);
   font-size: 14px;
 }
-.footer__top--right .footer__checkbox input {
+.footer__top--right .footer__checkbox--input {
   width: 16px;
   height: 16px;
   cursor: pointer;
   accent-color: rgb(255, 255, 255);
 }
-.footer__top--right .footer__checkbox p {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  font-size: 14px;
-}
-.footer__top--right .footer__checkbox a {
+.footer__top--right .footer__checkbox--link {
   color: inherit;
   text-decoration: underline;
   font-family: "Inter", sans-serif;
@@ -166,7 +161,7 @@ h6 {
   margin-bottom: 10px;
   font-family: "Inter", sans-serif;
 }
-.footer__middle > div {
+.footer__middle--divs {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -179,7 +174,7 @@ h6 {
   font-size: 16px;
   letter-spacing: 1px;
   font-family: "Roboto", sans-serif;
-  transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: color 0.3s;
   line-height: 1.5;
   font-weight: 3 0;
 }
@@ -202,24 +197,24 @@ h6 {
   font-weight: 400;
   flex-wrap: wrap;
 }
-.footer__bottom--left a {
+.footer__bottom--left_link {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: color 0.3s ease;
 }
 .footer__bottom--right {
   display: flex;
   gap: 25px;
   align-items: center;
 }
-.footer__bottom--right a {
+.footer__bottom--right_link {
   display: flex;
   align-items: center;
   opacity: 0.6;
-  transition: opacity 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: opacity 0.3s ease;
   color: #787879;
 }
-.footer__bottom--right a svg {
+.footer__bottom--icon {
   width: 17px;
   height: 17px;
   fill: currentColor;
@@ -234,9 +229,7 @@ h6 {
   right: 0;
   left: 0;
   z-index: 3000;
-  transition: transform 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: visibility 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.8s ease-in-out, opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
   margin-bottom: -102px;
 }
 .sticky-header.menu-open .nav__logo--light {
@@ -282,8 +275,7 @@ h6 {
      object-fit: contain;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: visibility 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 .nav__logo--light {
   z-index: 10;
@@ -312,7 +304,7 @@ h6 {
 .hamburger__btn--top, .hamburger__btn--bottom {
   height: 2px;
   background-color: rgb(255, 255, 255);
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s ease;
   transform-origin: center;
   position: absolute;
 }
@@ -347,15 +339,12 @@ h6 {
   gap: 5px;
   z-index: 1000;
 }
-.pagination a {
-  text-decoration: none;
-}
 .pagination__page {
   width: 3px;
   height: 25px;
   background-color: #9b9999;
   opacity: 0.5;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s ease;
 }
 .pagination__page.active {
   background-color: rgb(255, 255, 255);
@@ -373,7 +362,7 @@ h6 {
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.5s ease-in-out;
   display: flex !important;
   flex-direction: column;
   padding: 0 40px;
@@ -404,7 +393,7 @@ h6 {
   border: none;
   cursor: pointer;
   padding: 0;
-  transition: color 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: color 0.3s ease;
 }
 .menu-modal__tabs .menu-modal__tab.active {
   color: rgb(0, 0, 0);
@@ -427,7 +416,7 @@ h6 {
 .menu-modal__sidebar .menu-modal__vehicle-item {
   padding: 30px 20px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s ease;
   position: relative;
 }
 .menu-modal__sidebar .menu-modal__vehicle-item.active {
@@ -543,7 +532,7 @@ h6 {
   height: 100%;
   z-index: 1;
 }
-.hero__video video {
+.hero__video-tag {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -587,7 +576,7 @@ h6 {
   padding: 8px 20px;
   background: transparent;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.3s ease;
 }
 .hero__btn--text {
   font-size: 14px;
@@ -624,11 +613,11 @@ h6 {
   width: 100%;
   height: 100%;
 }
-.hero__volume--icon svg {
+.hero__volume--icon-svg {
   width: 100%;
   height: 100%;
 }
-.hero__volume--icon svg path {
+.hero__volume--icon-svg path {
   stroke: rgb(255, 255, 255);
   stroke-width: 1;
 }
@@ -651,7 +640,7 @@ h6 {
   inset: 0;
   background-size: cover;
   background-position: center;
-  transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: opacity 1s ease-in-out;
 }
 .car-scene__bg--light {
   opacity: 1;
@@ -663,7 +652,7 @@ h6 {
   z-index: 2;
   background-image: url("../../assets/images/page 2/night-bg.webp");
 }
-.car-scene__bg img {
+.car-scene__bg-img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -710,13 +699,13 @@ h6 {
 .car-scene__visuals .carousel-item.exiting {
   visibility: visible;
   z-index: 4;
-  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.6s ease-in-out;
   transform: translateX(-100%);
 }
 .car-scene__visuals .carousel-item.entering {
   visibility: visible;
   z-index: 5;
-  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.6s ease-in-out;
   transform: translateX(0);
 }
 .car-scene__visuals .carousel-item.is-preparing {
@@ -742,14 +731,14 @@ h6 {
   position: absolute;
   inset: 0;
   width: 100%;
-  transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: opacity 1s ease-in-out;
   will-change: opacity;
   display: flex;
   justify-content: center;
   align-items: center;
   align-items: flex-end;
 }
-.car-scene__car-main img {
+.car-scene__car-main-img {
   width: 100%;
   height: auto;
   max-height: 100%;
@@ -784,9 +773,9 @@ h6 {
   align-items: center;
   cursor: pointer;
   padding: 0;
-  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.4s ease-in-out;
 }
-.car-scene__nav svg {
+.car-scene__nav-svg {
   width: 24px;
   height: 24px;
   opacity: 0.8;
@@ -835,9 +824,9 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.1em;
   font-family: "Roboto", sans-serif;
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.4s ease-in-out;
 }
-.car-scene__btn svg {
+.car-scene__btn-svg {
   width: 18px;
   height: 18px;
 }
@@ -870,7 +859,7 @@ h6 {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.4s ease-in-out;
 }
 .car-scene__marker-inner {
   position: relative;
@@ -885,7 +874,7 @@ h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: opacity 1s ease-in-out;
 }
 .car-scene__marker .marker-icon--dark {
   opacity: 0;
@@ -907,7 +896,7 @@ h6 {
   height: 2px;
   width: 50%;
   background: rgb(255, 255, 255);
-  transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.4s ease-in-out;
 }
 .car-scene.is-dark .car-scene__bg--light {
   opacity: 1;
@@ -969,8 +958,7 @@ h6 {
   font-family: "Sequel", sans-serif;
   font-size: 40px;
   position: absolute;
-  transition: transform 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 1.2s ease-in-out, opacity 1s ease-in-out;
   opacity: 1;
   transform: translateY(0);
 }
@@ -992,8 +980,7 @@ h6 {
   align-items: center;
   justify-content: center;
   position: absolute;
-  transition: transform 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  transition: opacity 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 1.2s ease-in-out, opacity 1s ease-in-out;
   opacity: 0;
   transform: translateY(100px);
 }
@@ -1118,11 +1105,11 @@ h6 {
   padding-top: 50px;
 }
 .heritageSwiper .swiper-slide {
-  width: 340px;
+  width: 290px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: all 0.6s ease-in-out;
   position: relative;
 }
 .heritageSwiper .swiper-slide-active {
@@ -1138,7 +1125,7 @@ h6 {
   background: transparent;
   overflow: visible;
   position: relative;
-  transition: transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: transform 0.6s ease-in-out;
   transform: scale(0.7);
   cursor: url("data:image/svg+xml,%3Csvg width='116' height='64' viewBox='0 0 116 64' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='26.5' y='0.5' width='63' height='63' rx='31.5' fill='white' fill-opacity='0.5' stroke='%238D8D8D'/%3E%3Crect x='56' y='30' width='4' height='4' rx='2' fill='%23161616'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M110.375 32L104.75 37.625L103.962 36.8375L108.8 32L103.962 27.1625L104.75 26.375L110.375 32Z' fill='%238D8D8D'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.625 32L11.25 26.375L12.0375 27.1625L7.2 32L12.0375 36.8375L11.25 37.625L5.625 32Z' fill='%238D8D8D'/%3E%3C/svg%3E%0A"), auto;
 }
@@ -1165,7 +1152,7 @@ h6 {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  transition: filter 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: filter 0.6s ease;
 }
 .heritage-card__pill {
   position: absolute;

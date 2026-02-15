@@ -8,15 +8,12 @@
   flex-direction: column;
   gap: 5px;
   z-index: 1000;
-  a {
-    text-decoration: none;
-  }
   &__page {
     width: 3px;
     height: 25px;
     background-color: $gray-medium;
     opacity: 0.5;
-    @include transition(all, 0.3s);
+    transition: all 0.3s ease;
 
     &.active {
       background-color: $white-primary;
